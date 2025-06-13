@@ -1,0 +1,11 @@
+#main-footer {
+  color: white;
+
+  .inner {
+    background-color: black;
+  }
+
+  .logo-icon {
+    width: 9rem;
+  }
+}

@@ -1,0 +1,63 @@
+{
+    "key": "group_67ef4b9986b61",
+    "title": "Image",
+    "fields": [
+        {
+            "key": "field_67ef4b99a3659",
+            "label": "Use Dark Overlay",
+            "name": "use_dark_overlay",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Whether or not text over this image should be dark or not.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "useDarkOverlay",
+            "graphql_non_null": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "attachment",
+                "operator": "==",
+                "value": "image"
+            }
+        ],
+        [
+            {
+                "param": "attachment",
+                "operator": "==",
+                "value": "video"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "imageData",
+    "map_graphql_types_from_location_rules": 1,
+    "graphql_types": [
+        "MediaItem"
+    ],
+    "modified": 1743736154
+}

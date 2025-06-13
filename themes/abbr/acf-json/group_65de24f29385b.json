@@ -1,0 +1,274 @@
+{
+    "key": "group_65de24f29385b",
+    "title": "Global Data",
+    "fields": [
+        {
+            "key": "field_67d9cab9c2777",
+            "label": "Footer",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "footer",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_682e2c7d5144b",
+            "label": "Footer Text (Main)",
+            "name": "footer_text_main",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": "",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "footerTextLarge",
+            "graphql_non_null": 0
+        },
+        {
+            "key": "field_682e2c945144c",
+            "label": "Footer Text (Sub)",
+            "name": "footer_text_sub",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "footerTextSub",
+            "graphql_non_null": 0
+        },
+        {
+            "key": "field_682e2cbe5144d",
+            "label": "Footer Links",
+            "name": "footer_links",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_682e2cc14ce1c": {
+                    "key": "layout_682e2cc14ce1c",
+                    "name": "link_item",
+                    "label": "Link Item",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_682e2ce65144e",
+                            "label": "Link",
+                            "name": "link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "link",
+                            "graphql_non_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Footer Link",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "footerLinks",
+            "graphql_non_null": 0
+        },
+        {
+            "key": "field_683f40f7571ed",
+            "label": "Featured Projects",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "featuredProjects",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_683f4102571ee",
+            "label": "Featured Projects",
+            "name": "featured_projects",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "These projects will be featured on the work index.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "project"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "elements": "",
+            "bidirectional": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "featuredProjects",
+            "graphql_connection_type": "one_to_many",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_660b084753256",
+            "label": "Global SEO",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "globalSeo",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_660b086053257",
+            "label": "Meta Description",
+            "name": "meta_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "A meta description for the site. This will be used as the default, but can be overridden on a page by page basis.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_660b086a53258",
+            "label": "OG Image",
+            "name": "og_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "The social sharing image for the site. This will function as the default, but can be overridden on a page by page basis.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-global-data"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "globalData",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1748975904
+}

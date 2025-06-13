@@ -1,0 +1,987 @@
+{
+    "key": "group_683f3c4c9d7ec",
+    "title": "Home",
+    "fields": [
+        {
+            "key": "field_683f3c4d0b341",
+            "label": "Main Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "mainContent",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_683f3c5b0b342",
+            "label": "Modules",
+            "name": "modules",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_683f3c5e97cbd": {
+                    "key": "layout_683f3c5e97cbd",
+                    "name": "full_width_media",
+                    "label": "Full Width Media",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_683fbe4a74d3a",
+                            "label": "Type",
+                            "name": "type",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "image": "Image",
+                                "video": "Video"
+                            },
+                            "default_value": "image",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "type",
+                            "graphql_non_null": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_683f3c780b343",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "An image for this section.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_683fbe4a74d3a",
+                                        "operator": "==",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "image"
+                        },
+                        {
+                            "key": "field_683fbc8719b1d",
+                            "label": "Image (Mobile)",
+                            "name": "image_mobile",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_683fbe4a74d3a",
+                                        "operator": "==",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "imageMobile"
+                        },
+                        {
+                            "key": "field_683f3c8c0b344",
+                            "label": "Video (MP4)",
+                            "name": "video_mp4",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "An optional video for this section. Will override the image if present. Will autoplay and loop (muted).",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_683fbe4a74d3a",
+                                        "operator": "==",
+                                        "value": "video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "videoMp4"
+                        },
+                        {
+                            "key": "field_683fbc8f19b1e",
+                            "label": "Video (MP4) (Mobile)",
+                            "name": "video_mp4_mobile",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_683fbe4a74d3a",
+                                        "operator": "==",
+                                        "value": "video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "videoMp4Mobile"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_683f3cbe0b345": {
+                    "key": "layout_683f3cbe0b345",
+                    "name": "text_image",
+                    "label": "Text + Image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_683f3cc80b347",
+                            "label": "Headline",
+                            "name": "headline",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "An optional headline.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "headline",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3cce0b348",
+                            "label": "Link",
+                            "name": "link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "An optional link. Appears in the top right hand side of section.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "link",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3cdf0b349",
+                            "label": "Text",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Optional text.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "text",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3ce70b34a",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional image.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "image"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_683f3d0c0b34b": {
+                    "key": "layout_683f3d0c0b34b",
+                    "name": "featured_projects",
+                    "label": "Featured Projects",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_683f3d110b34d",
+                            "label": "Headline",
+                            "name": "headline",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional headline.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "headline",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_684b4d0c3b9ac",
+                            "label": "Projects",
+                            "name": "projects",
+                            "aria-label": "",
+                            "type": "flexible_content",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layouts": {
+                                "layout_684b4d1147545": {
+                                    "key": "layout_684b4d1147545",
+                                    "name": "project_item",
+                                    "label": "Project Item",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_684b4d183b9ad",
+                                            "label": "Project",
+                                            "name": "project",
+                                            "aria-label": "",
+                                            "type": "post_object",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "project"
+                                            ],
+                                            "post_status": [
+                                                "publish"
+                                            ],
+                                            "taxonomy": "",
+                                            "return_format": "object",
+                                            "multiple": 0,
+                                            "allow_null": 0,
+                                            "allow_in_bindings": 0,
+                                            "bidirectional": 0,
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "project",
+                                            "graphql_connection_type": "one_to_many",
+                                            "ui": 1,
+                                            "bidirectional_target": []
+                                        },
+                                        {
+                                            "key": "field_684b4d263b9ae",
+                                            "label": "Image",
+                                            "name": "image",
+                                            "aria-label": "",
+                                            "type": "image",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "return_format": "array",
+                                            "library": "all",
+                                            "min_width": "",
+                                            "min_height": "",
+                                            "min_size": "",
+                                            "max_width": "",
+                                            "max_height": "",
+                                            "max_size": "",
+                                            "mime_types": "",
+                                            "allow_in_bindings": 0,
+                                            "preview_size": "medium",
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "image"
+                                        },
+                                        {
+                                            "key": "field_684b4d2d3b9af",
+                                            "label": "Text",
+                                            "name": "text",
+                                            "aria-label": "",
+                                            "type": "wysiwyg",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "allow_in_bindings": 0,
+                                            "tabs": "all",
+                                            "toolbar": "full",
+                                            "media_upload": 0,
+                                            "delay": 0,
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "text",
+                                            "graphql_non_null": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                }
+                            },
+                            "min": "",
+                            "max": "",
+                            "button_label": "Add Row",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "projects",
+                            "graphql_non_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_683f3d850b34f": {
+                    "key": "layout_683f3d850b34f",
+                    "name": "grouped_list",
+                    "label": "Grouped List",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_683f3d900b356",
+                            "label": "Headline",
+                            "name": "headline",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional headline.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "headline",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3d9a0b357",
+                            "label": "Eyebrow Link",
+                            "name": "eyebrow_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "eyebrowLink",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3da70b358",
+                            "label": "Groups",
+                            "name": "groups",
+                            "aria-label": "",
+                            "type": "flexible_content",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layouts": {
+                                "layout_683f3daa42a8d": {
+                                    "key": "layout_683f3daa42a8d",
+                                    "name": "group_item",
+                                    "label": "Group Item",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_683f3dba0b359",
+                                            "label": "Title",
+                                            "name": "title",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "title",
+                                            "graphql_non_null": 0
+                                        },
+                                        {
+                                            "key": "field_683f3dc40b35a",
+                                            "label": "Subtitle",
+                                            "name": "subtitle",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "rows": "",
+                                            "placeholder": "",
+                                            "new_lines": "",
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "subtitle",
+                                            "graphql_non_null": 0
+                                        },
+                                        {
+                                            "key": "field_683f3dd40b35b",
+                                            "label": "Text",
+                                            "name": "text",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "rows": "",
+                                            "placeholder": "",
+                                            "new_lines": "",
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "text",
+                                            "graphql_non_null": 0
+                                        },
+                                        {
+                                            "key": "field_683f3ddf0b35c",
+                                            "label": "Link",
+                                            "name": "link",
+                                            "aria-label": "",
+                                            "type": "link",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "return_format": "array",
+                                            "allow_in_bindings": 0,
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "link",
+                                            "graphql_non_null": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                }
+                            },
+                            "min": "",
+                            "max": "",
+                            "button_label": "Add Group",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "groups",
+                            "graphql_non_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_683f3df68aac1": {
+                    "key": "layout_683f3df68aac1",
+                    "name": "mini_carousel",
+                    "label": "Mini Carousel",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_683f3e048aac3",
+                            "label": "Background Image",
+                            "name": "background_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "backgroundImage"
+                        },
+                        {
+                            "key": "field_683f3e128aac4",
+                            "label": "Carousel Title",
+                            "name": "carousel_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "carouselTitle",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3e258aac5",
+                            "label": "Carousel Link",
+                            "name": "carousel_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "carouselLink",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_683f3e348aac6",
+                            "label": "Carousel Items",
+                            "name": "carousel_items",
+                            "aria-label": "",
+                            "type": "flexible_content",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layouts": {
+                                "layout_683f3e3763419": {
+                                    "key": "layout_683f3e3763419",
+                                    "name": "carousel_item",
+                                    "label": "Carousel Item",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_683f3e438aac7",
+                                            "label": "Quote",
+                                            "name": "quote",
+                                            "aria-label": "",
+                                            "type": "wysiwyg",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "allow_in_bindings": 0,
+                                            "tabs": "all",
+                                            "toolbar": "full",
+                                            "media_upload": 0,
+                                            "delay": 0,
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "quote",
+                                            "graphql_non_null": 0
+                                        },
+                                        {
+                                            "key": "field_683f3e568aac8",
+                                            "label": "Author",
+                                            "name": "author",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "author",
+                                            "graphql_non_null": 0
+                                        },
+                                        {
+                                            "key": "field_683f3e608aac9",
+                                            "label": "Source",
+                                            "name": "source",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "show_in_graphql": 1,
+                                            "graphql_description": "",
+                                            "graphql_field_name": "source",
+                                            "graphql_non_null": 0
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                }
+                            },
+                            "min": "",
+                            "max": "",
+                            "button_label": "Add Carousel Item",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "carouselItems",
+                            "graphql_non_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_683f3f078aaca": {
+                    "key": "layout_683f3f078aaca",
+                    "name": "ideas_list",
+                    "label": "Ideas List",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_683f3f148aacc",
+                            "label": "Type",
+                            "name": "type",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "all": "All",
+                                "manual": "Manual"
+                            },
+                            "default_value": "all",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "type",
+                            "graphql_non_null": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_683f3f278aacd",
+                            "label": "Featured Ideas",
+                            "name": "featured_ideas",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_683f3f148aacc",
+                                        "operator": "==",
+                                        "value": "manual"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post"
+                            ],
+                            "post_status": [
+                                "publish"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": "",
+                            "max": "",
+                            "allow_in_bindings": 0,
+                            "elements": "",
+                            "bidirectional": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "featuredIdeas",
+                            "graphql_connection_type": "one_to_many",
+                            "bidirectional_target": []
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Module",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "modules",
+            "graphql_non_null": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "10"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "home",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1749825785
+}

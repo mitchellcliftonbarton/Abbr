@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+
+/*
+Global
+*/
+
+@theme {
+  --text-xs: 1.2rem;
+  --text-sm: 1.4rem;
+  --text-base: 1.6rem;
+  --text-md: 1.8rem;
+  --text-lg: 3rem;
+  --text-xl: 6rem;
+
+  --color-black: #000;
+  --color-white: #fff;
+  --color-grey-1: #f2f2f2;
+  --color-grey-2: #999999;
+  --color-grey-3: #666666;
+  --color-green: #00d719;
+
+  --font-primary: 'AP-Roman', 'Helvetica', sans-serif;
+  --font-secondary: 'AP-Mono', 'Helvetica', sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-size: 10px;
+  color: var(--color-black);
+  background: white;
+}
+
+body {
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.2;
+  background: white;
+
+  @media screen and (min-width: 1024px) {
+    font-size: var(--text-md);
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+main {
+  min-height: 100svh;
+  /* padding-bottom: 400px; */
+  padding-bottom: 13rem;
+}
+
+/*
+Other
+*/
+
+button {
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+img[data-src]:not(.lazyloaded),
+img[data-srcset]:not(.lazyloaded) {
+  opacity: 0;
+}
+
+img[data-src].lazyloaded,
+img[data-srcset].lazyloaded {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+input {
+  border-radius: 0;
+  outline: none;
+}
+
+figure {
+  margin: 0;
+}
+
+/*
+Utils
+*/
+
+@utility fill-parent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+@utility media-cover {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+@utility media-contain {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+Scroll Section
+*/
+
+/* .scroll-section {
+  scroll-margin: 150px;
+} */
+
+/*
+Forms
+*/
+
+input {
+  outline: none;
+  box-shadow: none;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}
+
+/*
+Rich TExt
+*/
+
+.rich-text {
+  & > * + * {
+    margin-top: 1em;
+  }
+
+  a {
+    text-decoration-line: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 0.06em;
+    transition: opacity 0.3s;
+
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  strong,
+  b {
+    font-weight: 500;
+  }
+}
