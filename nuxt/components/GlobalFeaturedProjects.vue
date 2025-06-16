@@ -16,7 +16,10 @@
       </DynamicLink>
     </div>
 
-    <div class="project-items-container mt-12">
+    <div
+      v-if="featuredProjects.length"
+      class="project-items-container mt-12"
+    >
       <FeaturedProjectItem
         v-for="(projectItem, index) in featuredProjects"
         :key="projectItem.project.nodes[0].id"

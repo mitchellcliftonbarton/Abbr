@@ -5,10 +5,11 @@
   >
     <div class="fill-parent grid grid-cols-2">
       <div
-        class="col-span-1"
+        class="col-span-1 bg-grey-4"
         :class="{ 'order-2': isOdd }"
       >
         <DefImage
+          v-if="projectItem?.image?.node"
           :image-data="projectItem.image.node"
           class="w-full h-full object-cover lazyload"
         />

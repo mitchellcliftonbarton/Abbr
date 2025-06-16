@@ -1,4 +1,4 @@
-# GRVTY
+# Abbr
 
 Wordpress theme: `/abbr-wp-theme`
 Nuxt app: `/nuxt
