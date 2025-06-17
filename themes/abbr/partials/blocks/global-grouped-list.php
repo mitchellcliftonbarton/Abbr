@@ -15,7 +15,7 @@
 ?>
 
 <?php if ($groups): ?>
-  <section class="global-grouped-list global-module">
+  <section class="global-grouped-list global-module relative z-10">
     <?php if ($headline or $eyebrow_link): ?>
       <div class="titles flex justify-between items-center border-b border-black pb-4 px-8">
         <?php if ($headline): ?>

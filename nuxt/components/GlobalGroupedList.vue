@@ -1,7 +1,8 @@
 <template>
   <section
+    ref="section"
     v-if="groups.length"
-    class="global-grouped-list global-module"
+    class="global-grouped-list global-module relative z-10"
   >
     <div
       v-if="headline || eyebrowLink"
@@ -57,6 +58,8 @@
 <script setup>
 import DynamicLink from '~/components/DynamicLink.vue'
 import { nl2br } from '~/lib/utils'
+import { gsap, ScrollTrigger } from 'gsap/all'
+gsap.registerPlugin(ScrollTrigger)
 
 // define props
 const props = defineProps({
@@ -70,10 +73,31 @@ const props = defineProps({
 const headline = computed(() => props.module?.headline)
 const eyebrowLink = computed(() => props.module?.eyebrow_link)
 const groups = computed(() => props.module?.groups)
+
+// define refs
+const section = ref(null)
+
+// define methods
+onMounted(() => {
+  ScrollTrigger.create({
+    trigger: section.value,
+    start: 'top 75%',
+    scrub: false,
+    once: true,
+    animation: gsap.to(section.value, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    }),
+  })
+})
 </script>
 
 <style scoped lang="postcss">
 .global-grouped-list {
+  opacity: 0;
+  transform: translateY(20px);
+
   .group-item {
     transition: background-color 0.2s;
 

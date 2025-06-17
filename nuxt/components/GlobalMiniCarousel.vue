@@ -29,7 +29,9 @@
             class="carousel-button"
             :class="{ active: index === currentIndex }"
             @click="carousel.slideToLoop(index)"
-          ></button>
+          >
+            <div class="indicator"></div>
+          </button>
         </div>
       </div>
 
@@ -38,6 +40,11 @@
         :space-between="0"
         :loop="true"
         :grab-cursor="true"
+        :modules="[Autoplay]"
+        :autoplay="{
+          delay: slideDuration,
+          disableOnInteraction: false,
+        }"
         @swiper="onSwiper"
         @slide-change="onSlideChange"
       >
@@ -87,7 +94,9 @@
 <script setup>
 import DefImage from '~/components/DefImage.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
+import { gsap } from 'gsap/all'
 
 // define props
 const props = defineProps({
@@ -99,6 +108,11 @@ const props = defineProps({
 
 const carousel = ref(null)
 const currentIndex = ref(0)
+const timer = ref(null)
+const slideDuration = ref(3000)
+const indicatorMinValue = ref(5)
+const indicatorMaxValue = ref(30)
+const indicatorWidth = ref(indicatorMinValue.value)
 
 // define data
 const backgroundImage = computed(() => props.module?.backgroundImage?.node)
@@ -113,6 +127,35 @@ const onSwiper = (swiper) => {
 
 const onSlideChange = (swiper) => {
   currentIndex.value = swiper.realIndex
+
+  // set all indicators to min value
+  const indicators = Array.from(document.querySelectorAll('.carousel-button .indicator'))
+  indicators.forEach((indicator) => {
+    gsap.set(indicator, {
+      width: indicatorMinValue.value,
+    })
+  })
+
+  nextTick(() => {
+    // get current indicator
+    const currentIndicator = document.querySelector(`.carousel-button.active .indicator`)
+
+    if (currentIndicator) {
+      console.log(currentIndicator)
+
+      gsap.fromTo(
+        currentIndicator,
+        {
+          width: indicatorMinValue.value,
+        },
+        {
+          width: indicatorMaxValue.value,
+          duration: slideDuration.value / 1000,
+          ease: 'linear',
+        }
+      )
+    }
+  })
 }
 </script>
 
@@ -137,12 +180,11 @@ const onSlideChange = (swiper) => {
       position: relative;
       overflow: hidden;
 
-      &::before {
-        content: '';
+      .indicator {
         position: absolute;
         top: 0;
         left: 0;
-        width: 15px;
+        /* width: 15px; */
         height: 100%;
         background-color: white;
         opacity: 0;
@@ -156,7 +198,7 @@ const onSlideChange = (swiper) => {
       &.active {
         width: 30px;
 
-        &::before {
+        .indicator {
           opacity: 1;
           transform: translateX(0);
         }

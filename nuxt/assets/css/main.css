@@ -227,7 +227,7 @@ Modules
   margin-top: 13rem;
 }
 
-.global-feautured-projects.global-module + .global-module {
+.global-featured-projects.global-module + .global-module {
   margin-top: -70svh;
 }
 

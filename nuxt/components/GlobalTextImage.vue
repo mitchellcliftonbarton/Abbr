@@ -1,5 +1,8 @@
 <template>
-  <section class="global-text-image global-module px-8">
+  <section
+    ref="section"
+    class="global-text-image global-module px-8"
+  >
     <div
       v-if="headline || link"
       class="titles flex justify-between items-center border-b border-grey-2 pb-4"
@@ -48,6 +51,8 @@
 <script setup>
 import Play from '~/components/Play.vue'
 import DynamicLink from '~/components/DynamicLink.vue'
+import { gsap, ScrollTrigger } from 'gsap/all'
+gsap.registerPlugin(ScrollTrigger)
 
 // define props
 const props = defineProps({
@@ -57,14 +62,36 @@ const props = defineProps({
   },
 })
 
+// define refs
+const section = ref(null)
+
 // define data
 const headline = computed(() => props.module?.headline)
 const link = computed(() => props.module?.link)
 const text = computed(() => props.module?.text)
 const image = computed(() => props.module?.image?.node)
+
+onMounted(() => {
+  ScrollTrigger.create({
+    trigger: section.value,
+    start: 'top 75%',
+    scrub: false,
+    once: true,
+    animation: gsap.to(section.value, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    }),
+  })
+})
 </script>
 
 <style scoped lang="postcss">
+section {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
 .titles + .text-content {
   margin-top: 1.8rem;
 }

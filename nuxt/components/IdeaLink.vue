@@ -1,9 +1,10 @@
 <template>
-  <DynamicLink
-    :href="`/?idea=${idea.slug}#all-ideas`"
+  <nuxt-link
+    :href="link"
     :data-slug="slug"
     class="idea-link flex-none aspect-[6/2] w-[200px] relative grid grid-cols-4 border border-grey-2 rounded-xl overflow-hidden"
     :class="{ active: isActive }"
+    @click.prevent="handleClick"
   >
     <div class="col-span-1 h-full relative">
       <DefImage
@@ -25,15 +26,17 @@
         {{ wordCount }} words
       </div>
     </div>
-  </DynamicLink>
+  </nuxt-link>
 </template>
 
 <script setup>
-import DynamicLink from '~/components/DynamicLink.vue'
 import DefImage from '~/components/DefImage.vue'
 
 // route
 const route = useRoute()
+const router = useRouter()
+
+const emit = defineEmits(['idea-click'])
 
 // define props
 const props = defineProps({
@@ -49,6 +52,14 @@ const mainImage = computed(() => props.idea.idea.mainImage?.node)
 const title = computed(() => props.idea.title)
 const wordCount = computed(() => props.idea.idea.text.split(' ').length)
 const text = computed(() => props.idea.idea.text)
+const link = computed(() => `/?idea=${slug.value}`)
 
 const isActive = computed(() => route.query.idea === slug.value)
+
+const handleClick = () => {
+  // emit an event to the parent
+  emit('idea-click')
+
+  router.push(link.value)
+}
 </script>

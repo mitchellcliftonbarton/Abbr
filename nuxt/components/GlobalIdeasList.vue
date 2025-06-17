@@ -1,11 +1,12 @@
 <template>
   <section
+    ref="section"
     v-if="ideas"
     id="all-ideas"
     class="global-ideas-list global-module px-8"
   >
     <div
-      class="ideas-container bg-grey-1 w-5/6 mx-auto max-w-[900px] rounded-2xl aspect-[3.5/2.2] relative flex flex-col justify-between gap-6 overflow-hidden"
+      class="ideas-container bg-grey-1 w-5/6 mx-auto max-w-[900px] rounded-2xl relative flex flex-col justify-between gap-6 overflow-hidden"
     >
       <div class="titles px-6 pt-6 flex-none">
         <div class="flex justify-between items-center border-b border-grey-2 pb-4">
@@ -27,6 +28,7 @@
           v-for="idea in ideas"
           :key="idea.id"
           :idea="idea"
+          @idea-click="handleIdeaClick"
         />
       </div>
 
@@ -45,6 +47,8 @@
 import DynamicLink from '~/components/DynamicLink.vue'
 import IdeaLink from '~/components/IdeaLink.vue'
 import IdeaContentItem from '~/components/IdeaContentItem.vue'
+import { gsap, ScrollTrigger } from 'gsap/all'
+gsap.registerPlugin(ScrollTrigger)
 
 // define props
 const props = defineProps({
@@ -53,6 +57,9 @@ const props = defineProps({
     required: true,
   },
 })
+
+// define refs
+const section = ref(null)
 
 const route = useRoute()
 
@@ -81,35 +88,56 @@ const currentIdea = computed(() => {
   return ideas.value[0]
 })
 
-const setScrollPosition = () => {
-  if (ideaSlug.value) {
-    const ideaLinks = Array.from(ideasContainer.value.querySelectorAll('.idea-link'))
-
-    const link = ideaLinks.find((link) => link.dataset.slug === ideaSlug.value)
-
-    if (link) {
-      ideasContainer.value.scrollTo({
-        left: link.offsetLeft - 15,
-        behavior: 'smooth',
-      })
-    }
-  }
+const handleIdeaClick = () => {
+  // scroll section into view
+  section.value.scrollIntoView({
+    behavior: 'smooth',
+  })
 }
 
-watch(ideaSlug, () => {
-  if (ideaSlug.value) {
-    setScrollPosition()
-  }
-})
+// const setScrollPosition = () => {
+//   if (ideaSlug.value) {
+//     const ideaLinks = Array.from(ideasContainer.value.querySelectorAll('.idea-link'))
+
+//     const link = ideaLinks.find((link) => link.dataset.slug === ideaSlug.value)
+
+//     if (link) {
+//       ideasContainer.value.scrollTo({
+//         left: link.offsetLeft - 15,
+//         behavior: 'smooth',
+//       })
+//     }
+//   }
+// }
+
+// watch(ideaSlug, () => {
+//   if (ideaSlug.value) {
+//     setScrollPosition()
+//   }
+// })
 
 onMounted(() => {
-  setScrollPosition()
+  // setScrollPosition()
+
+  ScrollTrigger.create({
+    trigger: section.value,
+    start: 'top 75%',
+    scrub: false,
+    once: true,
+    animation: gsap.to(section.value, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    }),
+  })
 })
 </script>
 
 <style scoped lang="postcss">
 .global-ideas-list {
   scroll-margin-top: 130px;
+  opacity: 0;
+  transform: translateY(20px);
 
   .idea-link {
     background-color: white;
