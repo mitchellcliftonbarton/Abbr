@@ -84,6 +84,12 @@ onMounted(() => {
     }),
   })
 })
+
+onUnmounted(() => {
+  if (scrollTrigger.value) {
+    scrollTrigger.value.kill()
+  }
+})
 </script>
 
 <style scoped lang="postcss">

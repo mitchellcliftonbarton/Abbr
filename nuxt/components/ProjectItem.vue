@@ -48,11 +48,11 @@ const projectTitle = computed(() => {
 })
 
 const projectSectors = computed(() => {
-  return props.project.projectServiceCategories.nodes
+  return props.project.projectSectors.nodes
 })
 
 const projectSectorsString = computed(() => {
-  return props.project.projectServiceCategories.nodes.map((sector) => sector.name).join(', ')
+  return props.project.projectSectors.nodes.map((sector) => sector.name).join(', ')
 })
 
 const projectIntroText = computed(() => {

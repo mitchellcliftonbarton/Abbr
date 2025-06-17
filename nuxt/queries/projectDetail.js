@@ -14,6 +14,51 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
               introText
               services
               team
+              mainImage {
+                node {
+                  altText
+                  mediaItemUrl
+                  mediaDetails {
+                    width
+                    height
+                    sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
+                      sourceUrl
+                      width
+                      name
+                    }
+                  }
+                }
+              }
+              modules {
+                ... on ProjectDataModulesMediaLayout {
+                  caption
+                  title
+                  image {
+                    node {
+                      altText
+                      mediaItemUrl
+                      mediaDetails {
+                        width
+                        height
+                        sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
+                          sourceUrl
+                          width
+                          name
+                        }
+                      }
+                    }
+                  }
+                  video {
+                    node {
+                      mediaItemUrl
+                      mediaDetails {
+                        width
+                        height
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

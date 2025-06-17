@@ -1,7 +1,7 @@
 <template>
   <div class="px-8">
     <section class="grid grid-cols-12 gap-8">
-      <div class="intro col-span-6 pt-20 enter-in-fade animation-delay-100">
+      <div class="intro col-span-6 pt-20 enter-in-fade-up animation-delay-100">
         <div class="font-bold">
           <p>for</p>
           <h1>{{ clientName ?? projectTitle }}</h1>
@@ -9,7 +9,7 @@
 
         <div
           v-if="introText"
-          class="rich-text mt-4 text-black tracking-[-.02em] leading-none font-bold"
+          class="rich-text mt-4 text-black tracking-[-.02em] leading-none font-bold w-1/2"
           v-html="introText"
         ></div>
 
@@ -37,7 +37,27 @@
           ></div>
         </div>
       </div>
+
+      <div
+        v-if="mainImage"
+        class="enter-in-fade-up animation-delay-200 col-span-6 pt-6"
+      >
+        <figure class="aspect-[4/5] w-[70%] mx-auto rounded-2xl overflow-hidden bg-grey-1">
+          <DefImage
+            :image-data="mainImage"
+            class="w-full h-full object-cover"
+          />
+        </figure>
+      </div>
     </section>
+
+    <ProjectModule
+      v-for="(module, index) in modules"
+      :key="module.id"
+      :module="module"
+      class="enter-in-fade-up"
+      :style="{ animationDelay: `${index * 100 + 200}ms` }"
+    />
   </div>
 </template>
 
@@ -75,6 +95,14 @@ const services = computed(() => {
 const team = computed(() => {
   return data.value?.project?.projectData?.team
 })
+
+const modules = computed(() => {
+  return data.value?.project?.projectData?.modules
+})
+
+const mainImage = computed(() => {
+  return data.value?.project?.projectData?.mainImage?.node
+})
 </script>
 
 <style scoped lang="postcss">
@@ -82,5 +110,9 @@ const team = computed(() => {
   & > * + * {
     margin-top: 1em;
   }
+}
+
+section + section {
+  margin-top: 5rem;
 }
 </style>

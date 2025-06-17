@@ -286,7 +286,7 @@
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
-                            "media_upload": 1,
+                            "media_upload": 0,
                             "delay": 0,
                             "show_in_graphql": 1,
                             "graphql_description": "",
@@ -329,5 +329,5 @@
     "graphql_field_name": "projectData",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1749786697
+    "modified": 1750202133
 }

@@ -37,6 +37,12 @@ export async function getProjectsData({ runTimeConfig }) {
                         slug
                       }
                     }
+                    projectSectors {
+                      nodes {
+                        name
+                        slug
+                      }
+                    }
                   }
                 }
               }
@@ -63,6 +69,12 @@ export async function getProjectsData({ runTimeConfig }) {
                 }
               }
               projectServiceCategories {
+                nodes {
+                  name
+                  slug
+                }
+              }
+              projectSectors {
                 nodes {
                   name
                   slug
