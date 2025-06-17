@@ -1,10 +1,12 @@
 <template>
   <footer
+    ref="footer"
     id="main-footer"
     class="p-8"
+    :class="{ visible: visible }"
   >
     <div class="inner p-6 rounded-2xl flex flex-col justify-between items-center">
-      <div class="flex justify-between items-start w-full pb-[178px]">
+      <div class="inner-item flex justify-between items-start w-full pb-[178px]">
         <div
           v-if="footerTextLarge"
           class="text-white text-xl tracking-[-.01em] leading-[.9] font-medium translate-y-[-.12em]"
@@ -18,7 +20,7 @@
 
       <div
         v-if="footerTextSub || footerLinks"
-        class="flex justify-between items-end w-full"
+        class="inner-item flex justify-between items-end w-full"
       >
         <div
           v-if="footerTextSub"
@@ -50,8 +52,12 @@ import Logo from '~/components/Logo.vue'
 import Play from '~/components/Play.vue'
 import DynamicLink from '~/components/DynamicLink.vue'
 import { nl2br } from '~/lib/utils'
+import { gsap, ScrollTrigger } from 'gsap/all'
+gsap.registerPlugin(ScrollTrigger)
 
 const footerData = useState('footerData')
+const visible = ref(false)
+const route = useRoute()
 
 // computed
 const footerTextLarge = computed(() => {
@@ -65,6 +71,33 @@ const footerTextSub = computed(() => {
 const footerLinks = computed(() => {
   return footerData.value?.footerLinks
 })
+
+// define refs
+const footer = ref(null)
+const scrollTrigger = ref(null)
+
+// define methods
+onMounted(() => {
+  scrollTrigger.value = ScrollTrigger.create({
+    trigger: footer.value,
+    start: 'top 85%',
+    scrub: false,
+    onEnter: () => {
+      console.log('enter')
+      visible.value = true
+    },
+  })
+})
+
+watch(route, () => {
+  if (scrollTrigger.value) {
+    visible.value = false
+
+    nextTick(() => {
+      scrollTrigger.value.refresh()
+    })
+  }
+})
 </script>
 
 <style scoped lang="postcss">
@@ -73,10 +106,25 @@ const footerLinks = computed(() => {
 
   .inner {
     background-color: black;
+
+    .inner-item {
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 2s var(--curve),
+        transform 2s var(--curve);
+    }
   }
 
   .logo-icon {
     width: 9rem;
+  }
+
+  &.visible {
+    .inner .inner-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 </style>

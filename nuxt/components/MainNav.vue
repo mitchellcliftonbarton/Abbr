@@ -13,15 +13,11 @@
       v-if="route.name === 'projects'"
       class="flex items-center gap-8"
     >
-      <nuxt-link
+      <FilterLink
         v-for="category in serviceCategories"
         :key="category.slug"
-        :to="`/projects?service=${category.slug}`"
-        class="block project-filter-link"
-      >
-        <span>{{ category.name }}</span>
-        <sup class="pl-1">{{ category.count }}</sup>
-      </nuxt-link>
+        :category="category"
+      />
     </div>
 
     <nuxt-link
@@ -34,22 +30,47 @@
 </template>
 
 <script setup>
+import FilterLink from '~/components/FilterLink.vue'
+
 const route = useRoute()
 
 // get service categories
 const serviceCategories = useState('serviceCategories')
 </script>
 
-<style scoped lang="postcss">
+<style lang="postcss">
 #main-nav {
   mix-blend-mode: exclusion;
   color: white;
   z-index: 1000;
 
   .project-filter-link {
-    sup {
-      opacity: 0.5;
+    transition:
+      color 0.2s,
+      opacity 0.2s;
+
+    .num-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-0.05em);
+      opacity: 0.7;
+    }
+
+    .number {
+      /* opacity: 0.7; */
       font-weight: 400;
+      /* transform: translateY(-0.35em);
+      display: inline-block; */
+    }
+
+    &.active {
+      color: #ff28e6;
+    }
+
+    svg {
+      width: 12px;
+      transform: translateY(-0.1em);
     }
   }
 

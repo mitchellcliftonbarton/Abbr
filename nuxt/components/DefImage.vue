@@ -1,6 +1,6 @@
 <template>
   <img
-    v-if="imageData"
+    v-if="srcset"
     ref="imgRef"
     :alt="altValue"
     :srcset="srcset"
@@ -37,12 +37,12 @@ const srcset = computed(() => {
   const srcset = []
 
   // loop through imageData sizes
-  props.imageData?.mediaDetails?.sizes.forEach((size) => {
+  props?.imageData?.mediaDetails?.sizes?.forEach((size) => {
     srcset.push(`${size.sourceUrl} ${size.width}w`)
   })
 
   // check if sizes array contains the mediaItemUrl
-  const sizesContainsMediaItemUrl = props.imageData?.mediaDetails?.sizes.some(
+  const sizesContainsMediaItemUrl = props.imageData?.mediaDetails?.sizes?.some(
     (size) => size.sourceUrl === props.imageData?.mediaItemUrl
   )
 
@@ -63,7 +63,7 @@ const sizes = computed(() => {
   const sizes = []
 
   // loop through imageData sizes
-  props.imageData?.mediaDetails?.sizes.forEach((size) => {
+  props?.imageData?.mediaDetails?.sizes?.forEach((size) => {
     sizes.push(`(max-width: ${size.width}px) ${size.width}px`)
   })
 

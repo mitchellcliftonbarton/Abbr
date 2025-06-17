@@ -2,12 +2,14 @@
   <section class="pt-40">
     <div
       v-if="featuredProjectsToShow.length > 0"
-      class="featured-projects grid grid-cols-3 enter-in-fade animation-delay-100"
+      class="featured-projects grid grid-cols-3"
     >
       <ProjectItem
-        v-for="project in featuredProjectsToShow"
-        :key="project.id"
+        v-for="(project, index) in featuredProjectsToShow"
+        :key="`featured-${project.id}-${route.fullPath}`"
         :project="project"
+        class="enter-in-fade-up"
+        :style="{ animationDelay: `${index * 100}ms` }"
       />
     </div>
 
@@ -20,8 +22,10 @@
       <div class="grid grid-cols-6 gap-4 mt-8">
         <ProjectItemAlt
           v-for="project in archiveProjectsToShow"
-          :key="project.id"
+          :key="`archive-${project.id}-${route.fullPath}`"
           :project="project"
+          class="enter-in-fade-up"
+          :style="{ animationDelay: `${index * 100}ms` }"
         />
       </div>
     </div>

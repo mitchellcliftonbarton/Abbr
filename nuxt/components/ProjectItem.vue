@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="`/projects/${project.slug}`"
-    class="project-item grid grid-cols-2 gap-8 p-8 rounded-2xl"
+    class="project-item grid grid-cols-2 gap-8 p-8"
   >
     <figure class="aspect-[4/5] col-span-1 rounded-2xl overflow-hidden bg-grey-1">
       <DefImage

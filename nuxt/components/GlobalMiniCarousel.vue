@@ -113,6 +113,7 @@ const slideDuration = ref(3000)
 const indicatorMinValue = ref(5)
 const indicatorMaxValue = ref(30)
 const indicatorWidth = ref(indicatorMinValue.value)
+const currentAnimation = ref(null)
 
 // define data
 const backgroundImage = computed(() => props.module?.backgroundImage?.node)
@@ -141,9 +142,12 @@ const onSlideChange = (swiper) => {
     const currentIndicator = document.querySelector(`.carousel-button.active .indicator`)
 
     if (currentIndicator) {
-      console.log(currentIndicator)
+      // Kill any existing animation
+      if (currentAnimation.value) {
+        currentAnimation.value.kill()
+      }
 
-      gsap.fromTo(
+      currentAnimation.value = gsap.fromTo(
         currentIndicator,
         {
           width: indicatorMinValue.value,
@@ -157,6 +161,13 @@ const onSlideChange = (swiper) => {
     }
   })
 }
+
+// Cleanup on unmount
+onBeforeUnmount(() => {
+  if (currentAnimation.value) {
+    currentAnimation.value.kill()
+  }
+})
 </script>
 
 <style scoped lang="postcss">

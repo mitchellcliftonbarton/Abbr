@@ -22,7 +22,7 @@ export async function getProjectsData({ runTimeConfig }) {
                           altText
                           mediaItemUrl
                           mediaDetails {
-                            sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
+                            sizes(include: [CUSTOM_LG, CUSTOM_MD]) {
                               sourceUrl
                               width
                               name
@@ -53,7 +53,7 @@ export async function getProjectsData({ runTimeConfig }) {
                     altText
                     mediaItemUrl
                     mediaDetails {
-                      sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
+                      sizes(include: [CUSTOM_LG, CUSTOM_MD]) {
                         sourceUrl
                         width
                         name
