@@ -6,8 +6,10 @@
     <nuxt-link
       to="/"
       class="block pointer-events-auto"
-      >Abbreviated</nuxt-link
     >
+      <span class="hidden md:block">Abbreviated</span>
+      <span class="block md:hidden">Abbr.</span>
+    </nuxt-link>
 
     <div
       v-if="route.name === 'projects'"

@@ -105,9 +105,12 @@ const handleIdeaClick = () => {
   })
 }
 
-watch(route.query.idea, () => {
-  $event.emit('update-scroll-triggers')
-})
+watch(
+  () => route.query.idea,
+  () => {
+    $event.emit('update-scroll-triggers')
+  }
+)
 
 // const setScrollPosition = () => {
 //   if (ideaSlug.value) {

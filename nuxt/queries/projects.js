@@ -30,6 +30,15 @@ export async function getProjectsData({ runTimeConfig }) {
                           }
                         }
                       }
+                      mainVideo {
+                        node {
+                          mediaItemUrl
+                          mediaDetails {
+                            width
+                            height
+                          }
+                        }
+                      }
                     }
                     projectServiceCategories {
                       nodes {

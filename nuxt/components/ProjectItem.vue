@@ -4,8 +4,19 @@
     class="project-item grid grid-cols-2 gap-8 p-8"
   >
     <figure class="aspect-[4/5] col-span-1 rounded-2xl overflow-hidden bg-grey-1">
+      <video
+        v-if="mainVideo"
+        :src="mainVideo"
+        class="w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      />
+
       <DefImage
-        v-if="mainImage"
+        v-else-if="mainImage"
         :image-data="mainImage"
         class="w-full h-full object-cover"
       />
@@ -61,6 +72,10 @@ const projectIntroText = computed(() => {
 
 const mainImage = computed(() => {
   return props.project.projectData.mainImage.node
+})
+
+const mainVideo = computed(() => {
+  return props.project.projectData.mainVideo?.node?.mediaItemUrl
 })
 </script>
 

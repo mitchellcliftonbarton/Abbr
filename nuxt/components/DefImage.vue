@@ -59,19 +59,9 @@ const srcset = computed(() => {
 const sizes = computed(() => {
   if (!props.imageData) return null
 
-  // start with empty array
-  const sizes = []
-
-  // loop through imageData sizes
-  props?.imageData?.mediaDetails?.sizes?.forEach((size) => {
-    sizes.push(`(max-width: ${size.width}px) ${size.width}px`)
-  })
-
-  // add 100vw as last size
-  sizes.push('100vw')
-
-  // return sizes as string
-  return sizes.join(', ')
+  // Use a more predictable sizes string that doesn't depend on dynamic data
+  // This prevents hydration mismatches between server and client
+  return '(max-width: 768px) 768px, (max-width: 1024px) 1024px, 100vw'
 })
 
 // refs/vars

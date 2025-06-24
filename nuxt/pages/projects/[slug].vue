@@ -1,6 +1,6 @@
 <template>
-  <div class="px-8">
-    <section class="grid grid-cols-12 gap-8">
+  <div>
+    <section class="grid grid-cols-12 gap-8 px-8">
       <div class="intro col-span-6 pt-20 enter-in-fade-up animation-delay-100">
         <div class="font-medium">
           <p>for</p>
@@ -39,11 +39,23 @@
       </div>
 
       <div
-        v-if="mainImage"
+        v-if="mainVideo || mainImage"
         class="enter-in-fade-up animation-delay-200 col-span-6 pt-6"
       >
         <figure class="aspect-[4/5] w-[70%] mx-auto rounded-2xl overflow-hidden bg-grey-1">
+          <video
+            v-if="mainVideo"
+            :src="mainVideo"
+            class="w-full h-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          />
+
           <DefImage
+            v-else-if="mainImage"
             :image-data="mainImage"
             class="w-full h-full object-cover"
           />
@@ -51,18 +63,40 @@
       </div>
     </section>
 
-    <ProjectModule
+    <component
       v-for="(module, index) in modules"
       :key="module.id"
       :module="module"
       class="enter-in-fade-up"
       :style="{ animationDelay: `${index * 100 + 200}ms` }"
+      :is="getModuleType(module.fieldGroupName)"
     />
+
+    <section class="related-projects enter-in-fade-up animation-delay-300">
+      <div class="px-8">
+        <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium border-b border-black pb-4">
+          Related Projects
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 pt-[1.8rem]">
+        <ProjectItem
+          v-for="project in relatedProjects"
+          :key="project.id"
+          :project="project"
+        />
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup>
 import { getProjectDetailData } from '~/queries/projectDetail'
+import ProjectItem from '~/components/ProjectItem.vue'
+
+// register components
+import ProjectMediaModule from '~/components/ProjectMediaModule.vue'
+import ProjectCarouselModule from '~/components/ProjectCarouselModule.vue'
 
 // get runtime config
 const runTimeConfig = useRuntimeConfig()
@@ -74,6 +108,15 @@ const route = useRoute()
 const { data } = await useAsyncData('projectDetailData', () =>
   getProjectDetailData({ runTimeConfig, slug: route.params.slug })
 )
+
+const getModuleType = (type) => {
+  switch (type) {
+    case 'ProjectDataModulesMediaLayout':
+      return ProjectMediaModule
+    case 'ProjectDataModulesCarouselLayout':
+      return ProjectCarouselModule
+  }
+}
 
 // computed
 const projectTitle = computed(() => {
@@ -102,6 +145,14 @@ const modules = computed(() => {
 
 const mainImage = computed(() => {
   return data.value?.project?.projectData?.mainImage?.node
+})
+
+const mainVideo = computed(() => {
+  return data.value?.project?.projectData?.mainVideo?.node?.mediaItemUrl
+})
+
+const relatedProjects = computed(() => {
+  return data.value?.project?.projectData?.relatedProjects?.nodes ?? data.value?.project?.projectData?.relatedProjects
 })
 </script>
 

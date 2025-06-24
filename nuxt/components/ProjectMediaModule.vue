@@ -1,5 +1,5 @@
 <template>
-  <section class="grid grid-cols-12 gap-8">
+  <section class="grid grid-cols-12 gap-8 px-8">
     <div class="col-span-6">
       <h2
         v-if="module.title"
@@ -15,11 +15,14 @@
       ></div>
     </div>
 
-    <div class="image col-span-6">
+    <div
+      class="image col-span-6"
+      :class="aspectRatio.class"
+    >
       <figure
         v-if="module?.image?.node || module?.video?.node"
-        class="w-full rounded-2xl overflow-hidden bg-grey-1"
-        :class="aspectRatio"
+        class="w-full rounded-2xl overflow-hidden bg-grey-1 mx-auto"
+        :style="{ aspectRatio: aspectRatio.value }"
       >
         <video
           v-if="isVideo"
@@ -66,11 +69,19 @@ const aspectRatio = computed(() => {
     height = props.module?.image?.node?.mediaDetails?.height
   }
 
+  const aspectRatio = width / height
+
   if (height > width) {
-    return 'portrait'
+    return {
+      class: 'portrait',
+      value: aspectRatio,
+    }
   }
 
-  return 'landscape'
+  return {
+    class: 'landscape',
+    value: aspectRatio,
+  }
 })
 </script>
 
@@ -79,14 +90,12 @@ const aspectRatio = computed(() => {
   &.portrait {
     figure {
       width: 70%;
-      aspect-ratio: 4/5;
     }
   }
 
   &.landscape {
     figure {
       width: 100%;
-      aspect-ratio: 5/4;
     }
   }
 }

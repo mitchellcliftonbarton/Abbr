@@ -2,14 +2,14 @@
   <footer
     ref="footer"
     id="main-footer"
-    class="p-8"
+    class="p-4 lg:p-8"
     :class="{ visible: visible }"
   >
-    <div class="inner p-6 rounded-2xl flex flex-col justify-between items-center">
+    <div class="inner p-4 lg:p-6 rounded-2xl flex flex-col justify-between items-center">
       <div class="inner-item flex justify-between items-start w-full pb-[178px]">
         <div
           v-if="footerTextLarge"
-          class="text-white text-xl tracking-[-.01em] leading-[.9] font-medium translate-y-[-.12em]"
+          class="text-white text-lg lg:text-xl tracking-[-.01em] leading-[.9] font-medium translate-y-[-.12em]"
           v-html="nl2br(footerTextLarge)"
         ></div>
 
@@ -20,17 +20,17 @@
 
       <div
         v-if="footerTextSub || footerLinks"
-        class="inner-item flex justify-between items-end w-full"
+        class="inner-item flex flex-wrap lg:flex-nowrap justify-between items-end w-full gap-8 lg:gap-0"
       >
         <div
           v-if="footerTextSub"
           v-html="footerTextSub"
-          class="text-white text-xs rich-text tracking-default leading-[1] max-w-[350px]"
+          class="text-white text-xs rich-text tracking-default leading-[1] lg:max-w-[350px] w-full lg:w-auto"
         ></div>
 
         <div
           v-if="footerLinks"
-          class="links flex gap-8"
+          class="links flex gap-8 justify-between lg:justify-start w-full lg:w-auto"
         >
           <DynamicLink
             v-for="link in footerLinks"
@@ -128,7 +128,11 @@ watch(route, () => {
   }
 
   .logo-icon {
-    width: 9rem;
+    width: 5rem;
+
+    @media (width >= 1024px) {
+      width: 9rem;
+    }
   }
 
   &.visible {

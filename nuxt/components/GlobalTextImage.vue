@@ -1,7 +1,7 @@
 <template>
   <section
     ref="section"
-    class="global-text-image global-module px-8"
+    class="global-text-image global-module px-4 lg:px-8"
   >
     <div
       v-if="headline || link"
@@ -30,21 +30,21 @@
     <div class="text-content grid grid-cols-12 gap-8">
       <div
         v-if="text"
-        class="col-span-12 lg:col-span-8"
+        class="col-span-6 lg:col-span-8"
       >
         <div
           v-html="text"
-          class="text-lg text-black tracking-default leading-[1] rich-text font-medium"
+          class="text-base lg:text-lg text-black tracking-default leading-[1] rich-text lg:font-medium"
         ></div>
       </div>
 
       <div
         v-if="image"
-        class="col-start-10 col-span-3"
+        class="lg:col-start-10 col-span-6 lg:col-span-3"
       >
         <DefImage
           :image-data="image"
-          class="object-cover w-full h-full object-center lazyload overflow-hidden rounded-2xl"
+          class="object-cover w-full lg:h-full object-center lazyload overflow-hidden rounded-2xl"
         />
       </div>
     </div>
