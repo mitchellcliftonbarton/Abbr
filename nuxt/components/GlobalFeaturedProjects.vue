@@ -3,7 +3,7 @@
     <div class="titles flex justify-between items-center border-b border-black pb-4">
       <h2
         v-if="headline"
-        class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium"
+        class="text-lg text-grey-2 tracking-default leading-none font-medium"
       >
         {{ headline }}
       </h2>
@@ -12,7 +12,10 @@
         href="/projects"
         class="circle-link"
       >
-        View All
+        <div class="text-content">
+          <div>View All</div>
+          <div>View All</div>
+        </div>
       </DynamicLink>
     </div>
 
@@ -37,6 +40,9 @@ import FeaturedProjectItem from '~/components/FeaturedProjectItem.vue'
 import { gsap, ScrollTrigger } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger)
 
+// get event bus
+const { $listen } = useNuxtApp()
+
 // define props
 const props = defineProps({
   module: {
@@ -50,6 +56,13 @@ const featuredProjects = computed(() => props.module?.projects.filter((project) 
 const headline = computed(() => props.module?.headline)
 
 onMounted(() => {
+  $listen('update-scroll-triggers', () => {
+    if (scrollTrigger.value) {
+      scrollTrigger.value.refresh()
+    }
+  })
+
+  // define scroll trigger
   const projectItemsContainer = document.querySelector('.project-items-container')
   const projectItems = Array.from(document.querySelectorAll('.project-item'))
   const projectItemsContainerHeight = projectItemsContainer.offsetHeight

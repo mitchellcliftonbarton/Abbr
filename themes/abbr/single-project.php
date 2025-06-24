@@ -26,7 +26,7 @@
       </div>
 
       <?php if ($intro_text): ?>
-        <div class="text-black tracking-[-.02em] leading-none font-bold"><?= $intro_text ?></div>
+        <div class="text-black tracking-default leading-none font-bold"><?= $intro_text ?></div>
       <?php endif; ?>
 
       <?php if ($services): ?>

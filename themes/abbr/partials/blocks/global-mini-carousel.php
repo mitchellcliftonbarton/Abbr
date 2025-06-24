@@ -28,7 +28,7 @@
     <mini-carousel class="block w-1/4 aspect-[4/5.8] relative rounded-xl flex flex-col justify-between">
       <div class="flex justify-between items-center flex-none p-6">
         <?php if ($carousel_title): ?>
-          <h2 class="text-sm uppercase text-grey-2 tracking-[-.02em] leading-none font-medium"><?= $carousel_title ?></h2>
+          <h2 class="text-sm uppercase text-grey-2 tracking-default leading-none font-medium"><?= $carousel_title ?></h2>
         <?php endif; ?>
 
         <?php if (count($carousel_items) > 1): ?>
@@ -51,7 +51,7 @@
 
             <?php if ($quote): ?>
               <div class="swiper-slide fill-parent pt-4 px-6 <?php if ($key === 0): ?>active<?php endif; ?>">
-                <div class="quote text-lg tracking-[-.02em] leading-none font-medium">
+                <div class="quote text-lg tracking-default leading-none font-medium">
                   <p>“</p>
                   <div><?= $quote ?></div>
                 </div>
@@ -59,11 +59,11 @@
                 <?php if ($author or $source): ?>
                   <div class="mt-6 flex flex-col items-start gap-1">
                     <?php if ($author): ?>
-                      <div class="author text-sm tracking-[-.02em] leading-none font-medium"><?= $author ?></div>
+                      <div class="author text-sm tracking-default leading-none font-medium"><?= $author ?></div>
                     <?php endif; ?>
 
                     <?php if ($source): ?>
-                      <div class="source text-sm tracking-[-.02em] leading-none font-medium opacity-50"><?= $source ?></div>
+                      <div class="source text-sm tracking-default leading-none font-medium opacity-50"><?= $source ?></div>
                     <?php endif; ?>
                   </div>
                 <?php endif; ?>

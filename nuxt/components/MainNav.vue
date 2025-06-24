@@ -1,17 +1,17 @@
 <template>
   <header
     id="main-nav"
-    class="fixed top-0 left-0 px-8 py-6 flex justify-between items-center w-full font-medium"
+    class="fixed top-0 left-0 px-8 py-6 flex justify-between items-center w-full font-medium pointer-events-none"
   >
     <nuxt-link
       to="/"
-      class="block"
+      class="block pointer-events-auto"
       >Abbreviated</nuxt-link
     >
 
     <div
       v-if="route.name === 'projects'"
-      class="flex items-center gap-8"
+      class="flex items-center gap-8 pointer-events-auto"
     >
       <FilterLink
         v-for="category in serviceCategories"
@@ -23,7 +23,7 @@
     <nuxt-link
       v-else
       to="/projects"
-      class="block"
+      class="block pointer-events-auto"
       >Projects</nuxt-link
     >
   </header>

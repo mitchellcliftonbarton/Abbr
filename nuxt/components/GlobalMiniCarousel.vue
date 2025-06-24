@@ -14,7 +14,7 @@
       <div class="flex justify-between items-center flex-none p-6">
         <h2
           v-if="carouselTitle"
-          class="text-sm uppercase text-grey-2 tracking-[-.02em] leading-none font-medium"
+          class="text-sm uppercase text-grey-2 tracking-default leading-none font-medium"
         >
           {{ carouselTitle }}
         </h2>
@@ -53,7 +53,7 @@
           :key="item.id"
           class="fill-parent pt-4 px-6"
         >
-          <div class="quote text-lg tracking-[-.02em] leading-none font-medium">
+          <div class="quote text-lg tracking-default leading-none font-medium">
             <p>“</p>
             <div v-html="item.quote"></div>
           </div>
@@ -61,14 +61,14 @@
           <div class="mt-6 flex flex-col items-start gap-1">
             <div
               v-if="item.author"
-              class="author text-sm tracking-[-.02em] leading-none font-medium"
+              class="author text-sm tracking-default leading-none font-medium"
             >
               {{ item.author }}
             </div>
 
             <div
               v-if="item.source"
-              class="source text-sm tracking-[-.02em] leading-none font-medium opacity-50"
+              class="source text-sm tracking-default leading-none font-medium opacity-50"
             >
               {{ item.source }}
             </div>
@@ -84,7 +84,10 @@
           :href="carouselLink.url"
           class="circle-link circle-link-white"
         >
-          {{ carouselLink.title }}
+          <div class="text-content">
+            <div>{{ carouselLink.title }}</div>
+            <div>{{ carouselLink.title }}</div>
+          </div>
         </DynamicLink>
       </div>
     </div>

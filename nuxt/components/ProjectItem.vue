@@ -13,11 +13,11 @@
 
     <div class="col-span-1">
       <div>
-        <h2 class="text-base text-black tracking-[-.02em] leading-none font-medium">{{ projectTitle }}</h2>
+        <h2 class="text-base text-black tracking-default leading-none font-medium">{{ projectTitle }}</h2>
 
         <p
           v-if="projectSectors"
-          class="text-base text-grey-2 tracking-[-.02em] leading-none font-medium"
+          class="text-base text-grey-2 tracking-default leading-none font-medium"
         >
           {{ projectSectorsString }}
         </p>
@@ -25,7 +25,7 @@
 
       <div
         v-if="projectIntroText"
-        class="intro-text mt-8 text-base text-black tracking-[-.02em] leading-none font-medium"
+        class="intro-text mt-8 text-base text-black tracking-default leading-none font-medium"
         v-html="projectIntroText"
       ></div>
     </div>

@@ -19,6 +19,8 @@ Global
   --color-grey-3: #666666;
   --color-green: #00d719;
 
+  --tracking-default: -0.02em;
+
   --font-primary: 'AP-Roman', 'Helvetica', sans-serif;
   --font-secondary: 'AP-Mono', 'Helvetica', sans-serif;
 }

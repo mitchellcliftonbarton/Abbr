@@ -25,7 +25,7 @@
         <div
           v-if="footerTextSub"
           v-html="footerTextSub"
-          class="text-white text-xs rich-text tracking-[-.02em] leading-[1] max-w-[350px]"
+          class="text-white text-xs rich-text tracking-default leading-[1] max-w-[350px]"
         ></div>
 
         <div
@@ -39,7 +39,10 @@
             class="play-link text-white text-xs font-secondary uppercase"
           >
             <Play />
-            <span>{{ link.link.title }}</span>
+            <div class="text-content">
+              <div>{{ link.link.title }}</div>
+              <div>{{ link.link.title }}</div>
+            </div>
           </DynamicLink>
         </div>
       </div>
@@ -58,6 +61,9 @@ gsap.registerPlugin(ScrollTrigger)
 const footerData = useState('footerData')
 const visible = ref(false)
 const route = useRoute()
+
+// get event bus
+const { $listen } = useNuxtApp()
 
 // computed
 const footerTextLarge = computed(() => {
@@ -83,9 +89,14 @@ onMounted(() => {
     start: 'top 85%',
     scrub: false,
     onEnter: () => {
-      console.log('enter')
       visible.value = true
     },
+  })
+
+  $listen('update-scroll-triggers', () => {
+    if (scrollTrigger.value) {
+      scrollTrigger.value.refresh()
+    }
   })
 })
 

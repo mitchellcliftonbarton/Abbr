@@ -1,27 +1,33 @@
 <template>
   <nuxt-link
     :to="archiveLink || `/projects/${project.slug}`"
-    class="project-item-alt aspect-[6/2] grid grid-cols-4 border border-grey-2 rounded-2xl overflow-hidden"
+    class="project-item-alt aspect-[6/2] border border-grey-2 rounded-2xl overflow-hidden"
   >
-    <div class="col-span-1 h-full relative">
-      <figure class="fill-parent">
-        <DefImage
-          v-if="mainImage"
-          :image-data="mainImage"
-          class="w-full h-full object-cover"
-        />
-      </figure>
-    </div>
+    <div class="inner flex h-full">
+      <div class="view">
+        <p class="font-secondary uppercase text-xs p-2">View Project</p>
+      </div>
 
-    <div class="col-span-3 text-sm leading-[1.2] py-2 px-3">
-      <p class="text-black line-clamp-2">{{ projectTitle }}</p>
+      <div class="image h-full relative">
+        <figure class="fill-parent">
+          <DefImage
+            v-if="mainImage"
+            :image-data="mainImage"
+            class="w-full h-full object-cover"
+          />
+        </figure>
+      </div>
 
-      <p
-        v-if="projectSectors"
-        class="text-grey-3"
-      >
-        {{ projectSectorsString }}
-      </p>
+      <div class="titles text-sm leading-[1.2] py-2 px-3">
+        <p class="text-black line-clamp-2">{{ projectTitle }}</p>
+
+        <p
+          v-if="projectSectors"
+          class="text-grey-3"
+        >
+          {{ projectSectorsString }}
+        </p>
+      </div>
     </div>
   </nuxt-link>
 </template>
@@ -61,10 +67,48 @@ const archiveLink = computed(() => {
 <style scoped lang="postcss">
 .project-item-alt {
   background-color: white;
-  transition: background-color 0.2s;
+
+  .view {
+    width: 75%;
+    flex: none;
+    background-color: var(--color-grey-1);
+
+    p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--color-green);
+        transform: translateY(0.08em);
+      }
+    }
+  }
+
+  .image {
+    width: 25%;
+    flex: none;
+  }
+
+  .titles {
+    width: 75%;
+    flex: none;
+    transition: background-color 0.2s;
+  }
+
+  .inner {
+    transition: transform 0.2s;
+    transform: translateX(-75%);
+  }
 
   &:hover {
-    background-color: var(--color-grey-1);
+    .inner {
+      transform: translateX(0%);
+    }
   }
 }
 </style>

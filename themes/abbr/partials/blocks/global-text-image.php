@@ -20,7 +20,7 @@
     <?php if ($headline or $link): ?>
       <div class="titles flex justify-between items-center border-b border-grey-2 pb-4">
         <?php if ($headline): ?>
-          <h2 class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium"><?= $headline ?></h2>
+          <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium"><?= $headline ?></h2>
         <?php endif; ?>
 
         <?php if ($link): ?>
@@ -36,7 +36,7 @@
     <div class="text-content grid grid-cols-12 gap-8">
       <?php if ($text): ?>
         <div class="col-span-12 lg:col-span-8">
-          <div class="text-lg text-black tracking-[-.02em] leading-[1] rich-text font-medium"><?= $text ?></div>
+          <div class="text-lg text-black tracking-default leading-[1] rich-text font-medium"><?= $text ?></div>
         </div>
       <?php endif; ?>
 

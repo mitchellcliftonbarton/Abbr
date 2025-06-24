@@ -22,7 +22,7 @@
         <div
           v-if="projectItem.text"
           v-html="projectItem.text"
-          class="text-lg text-black font-medium leading-none tracking-[-.02em]"
+          class="text-lg text-black font-medium leading-none tracking-default"
         />
       </div>
     </div>

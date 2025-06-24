@@ -29,15 +29,15 @@
 
   <div class="col-span-1">
     <div>
-      <h2 class="text-base text-black tracking-[-.02em] leading-none font-medium"><?= get_the_title($project) ?></h2>
+      <h2 class="text-base text-black tracking-default leading-none font-medium"><?= get_the_title($project) ?></h2>
 
       <?php if ($project_sectors): ?>
-        <p class="text-base text-grey-2 tracking-[-.02em] leading-none font-medium"><?= $project_sectors_string ?></p>
+        <p class="text-base text-grey-2 tracking-default leading-none font-medium"><?= $project_sectors_string ?></p>
       <?php endif; ?>
     </div>
 
     <?php if ($intro_text): ?>
-      <div class="intro-text mt-8 text-base text-black tracking-[-.02em] leading-none font-medium"><?= $intro_text ?></div>
+      <div class="intro-text mt-8 text-base text-black tracking-default leading-none font-medium"><?= $intro_text ?></div>
     <?php endif; ?>
   </div>
 </a>

@@ -10,13 +10,9 @@
     >
       <div class="titles px-6 pt-6 flex-none">
         <div class="flex justify-between items-center border-b border-grey-2 pb-4">
-          <h2 class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium">Abbr. Ideas</h2>
+          <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Abbr. Ideas</h2>
 
-          <DynamicLink
-            href="/"
-            class="circle-link"
-            >Share</DynamicLink
-          >
+          <CopyLink :text="linkToCopy" />
         </div>
       </div>
 
@@ -25,9 +21,10 @@
         class="all-ideas flex-none flex flex-nowrap gap-2 px-6 overflow-x-auto"
       >
         <IdeaLink
-          v-for="idea in ideas"
+          v-for="(idea, index) in ideas"
           :key="idea.id"
           :idea="idea"
+          :index="index"
           @idea-click="handleIdeaClick"
         />
       </div>
@@ -47,6 +44,7 @@
 import DynamicLink from '~/components/DynamicLink.vue'
 import IdeaLink from '~/components/IdeaLink.vue'
 import IdeaContentItem from '~/components/IdeaContentItem.vue'
+import CopyLink from '~/components/CopyLink.vue'
 import { gsap, ScrollTrigger } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger)
 
@@ -57,6 +55,9 @@ const props = defineProps({
     required: true,
   },
 })
+
+// get event bus
+const { $event } = useNuxtApp()
 
 // define refs
 const section = ref(null)
@@ -89,12 +90,24 @@ const currentIdea = computed(() => {
   return ideas.value[0]
 })
 
+const linkToCopy = computed(() => {
+  if (process.client) {
+    return `${window.location.origin}?idea=${currentIdea.value.slug}`
+  }
+
+  return `/?idea=${currentIdea.value.slug}`
+})
+
 const handleIdeaClick = () => {
   // scroll section into view
   section.value.scrollIntoView({
     behavior: 'smooth',
   })
 }
+
+watch(route.query.idea, () => {
+  $event.emit('update-scroll-triggers')
+})
 
 // const setScrollPosition = () => {
 //   if (ideaSlug.value) {
@@ -131,6 +144,19 @@ onMounted(() => {
       duration: 0.5,
     }),
   })
+
+  nextTick(() => {
+    // check if route has idea param
+    const ideaParam = route.query.idea
+
+    if (ideaParam) {
+      setTimeout(() => {
+        section.value.scrollIntoView({
+          behavior: 'smooth',
+        })
+      }, 300) // dont like this solution but it works
+    }
+  })
 })
 
 onUnmounted(() => {
@@ -145,15 +171,6 @@ onUnmounted(() => {
   scroll-margin-top: 130px;
   opacity: 0;
   transform: translateY(20px);
-
-  .idea-link {
-    background-color: white;
-    transition: background-color 0.2s;
-
-    &.active {
-      background-color: var(--color-green);
-    }
-  }
 
   .all-ideas {
     &::-webkit-scrollbar {

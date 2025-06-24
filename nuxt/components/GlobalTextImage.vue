@@ -9,7 +9,7 @@
     >
       <h2
         v-if="headline"
-        class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium"
+        class="text-lg text-grey-2 tracking-default leading-none font-medium"
       >
         {{ headline }}
       </h2>
@@ -20,7 +20,10 @@
         class="play-link font-secondary uppercase text-xs"
       >
         <Play />
-        <span>{{ link.title }}</span>
+        <div class="text-content">
+          <div>{{ link.title }}</div>
+          <div>{{ link.title }}</div>
+        </div>
       </DynamicLink>
     </div>
 
@@ -31,7 +34,7 @@
       >
         <div
           v-html="text"
-          class="text-lg text-black tracking-[-.02em] leading-[1] rich-text font-medium"
+          class="text-lg text-black tracking-default leading-[1] rich-text font-medium"
         ></div>
       </div>
 
@@ -53,6 +56,9 @@ import Play from '~/components/Play.vue'
 import DynamicLink from '~/components/DynamicLink.vue'
 import { gsap, ScrollTrigger } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger)
+
+// get event bus
+const { $listen } = useNuxtApp()
 
 // define props
 const props = defineProps({
@@ -83,6 +89,12 @@ onMounted(() => {
       y: 0,
       duration: 0.5,
     }),
+  })
+
+  $listen('update-scroll-triggers', () => {
+    if (scrollTrigger.value) {
+      scrollTrigger.value.refresh()
+    }
   })
 })
 

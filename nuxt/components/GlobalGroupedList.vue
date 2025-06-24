@@ -10,7 +10,7 @@
     >
       <h2
         v-if="headline"
-        class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium"
+        class="text-lg text-grey-2 tracking-default leading-none font-medium"
       >
         {{ headline }}
       </h2>
@@ -31,20 +31,20 @@
       class="group-item grid grid-cols-12 gap-8 border-b border-black px-8 pt-3 pb-6"
     >
       <div class="group-item-title col-span-8">
-        <h3 class="title text-lg text-grey-3 tracking-[-.02em] leading-none font-medium">
+        <h3 class="title text-lg text-grey-3 tracking-default leading-none font-medium">
           {{ group.title }}
         </h3>
 
         <div
           v-html="group.subtitle"
-          class="subtitle text-lg text-grey-2 tracking-[-.02em] leading-none font-medium w-1/2 max-w-[500px]"
+          class="subtitle text-lg text-grey-2 tracking-default leading-none font-medium w-1/2 max-w-[500px]"
         ></div>
       </div>
 
       <div class="col-span-4 relative">
         <div
           v-html="nl2br(group.text)"
-          class="text text-lg text-grey-3 tracking-[-.02em] leading-none font-medium"
+          class="text text-lg text-grey-3 tracking-default leading-none font-medium"
         ></div>
 
         <div class="def-button absolute top-0 right-0">
@@ -60,6 +60,9 @@ import DynamicLink from '~/components/DynamicLink.vue'
 import { nl2br } from '~/lib/utils'
 import { gsap, ScrollTrigger } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger)
+
+// get event bus
+const { $listen } = useNuxtApp()
 
 // define props
 const props = defineProps({
@@ -90,6 +93,12 @@ onMounted(() => {
       y: 0,
       duration: 0.5,
     }),
+  })
+
+  $listen('update-scroll-triggers', () => {
+    if (scrollTrigger.value) {
+      scrollTrigger.value.refresh()
+    }
   })
 })
 

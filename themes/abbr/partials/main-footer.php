@@ -19,7 +19,7 @@ $footer_links = get_field('footer_links', 'option');
     <?php if ($footer_links or $footer_text_sub): ?>
       <div class="flex justify-between items-end w-full">
         <?php if ($footer_text_sub): ?>
-          <div class="text-white text-xs rich-text tracking-[-.02em] leading-[1] max-w-[350px]"><?= $footer_text_sub ?></div>
+          <div class="text-white text-xs rich-text tracking-default leading-[1] max-w-[350px]"><?= $footer_text_sub ?></div>
         <?php endif; ?>
 
         <?php if ($footer_links): ?>

@@ -9,7 +9,7 @@
         :key="`featured-${project.id}-${route.fullPath}`"
         :project="project"
         class="enter-in-fade-up"
-        :style="{ animationDelay: `${index * 100}ms` }"
+        :style="{ animationDelay: `${index * 50}ms` }"
       />
     </div>
 
@@ -17,15 +17,13 @@
       v-if="archiveProjectsToShow.length > 0"
       class="all-projects px-8 enter-in-fade animation-delay-200"
     >
-      <h2 class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium">Archive</h2>
+      <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Archive</h2>
 
       <div class="grid grid-cols-6 gap-4 mt-8">
         <ProjectItemAlt
           v-for="(project, index) in archiveProjectsToShow"
           :key="`archive-${project.id}-${route.fullPath}`"
           :project="project"
-          class="enter-in-fade-up"
-          :style="{ animationDelay: `${index * 100}ms` }"
         />
       </div>
     </div>

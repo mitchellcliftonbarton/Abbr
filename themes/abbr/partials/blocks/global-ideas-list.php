@@ -35,7 +35,7 @@
     <ideas-container class="bg-grey-1 w-5/6 mx-auto max-w-[900px] rounded-2xl aspect-[3.5/2.2] relative flex flex-col justify-between gap-6 overflow-hidden">
       <div class="titles px-6 pt-6 flex-none">
         <div class="flex justify-between items-center border-b border-grey-2 pb-4">
-          <h2 class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium">Abbr. Ideas</h2>
+          <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Abbr. Ideas</h2>
 
           <a href="/" class="circle-link">Share</a>
         </div>

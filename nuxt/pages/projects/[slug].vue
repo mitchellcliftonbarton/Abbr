@@ -9,7 +9,7 @@
 
         <div
           v-if="introText"
-          class="rich-text mt-4 text-black tracking-[-.02em] leading-none font-medium w-1/2"
+          class="rich-text mt-4 text-black tracking-default leading-none font-medium w-1/2"
           v-html="introText"
         ></div>
 

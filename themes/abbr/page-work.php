@@ -83,7 +83,7 @@
 
   <?php if (count($all_projects) > 0): ?>
     <div class="all-projects px-8">
-      <h2 class="text-lg text-grey-2 tracking-[-.02em] leading-none font-medium">Archive</h2>
+      <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Archive</h2>
 
       <div class="grid grid-cols-6 gap-4 mt-8">
         <?php foreach ($all_projects as $project): ?>
