@@ -151,6 +151,27 @@
             "graphql_non_null": 0
         },
         {
+            "key": "field_685b09f1686f0",
+            "label": "Archive Link",
+            "name": "archive_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Projects in the archive will link to this link if it exists.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "archiveLink",
+            "graphql_non_null": 0
+        },
+        {
             "key": "field_683f41cb4c12c",
             "label": "Modular Content",
             "name": "",
@@ -329,5 +350,5 @@
     "graphql_field_name": "projectData",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1750202133
+    "modified": 1750796827
 }

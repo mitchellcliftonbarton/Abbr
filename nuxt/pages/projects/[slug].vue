@@ -2,14 +2,14 @@
   <div class="px-8">
     <section class="grid grid-cols-12 gap-8">
       <div class="intro col-span-6 pt-20 enter-in-fade-up animation-delay-100">
-        <div class="font-bold">
+        <div class="font-medium">
           <p>for</p>
           <h1>{{ clientName ?? projectTitle }}</h1>
         </div>
 
         <div
           v-if="introText"
-          class="rich-text mt-4 text-black tracking-[-.02em] leading-none font-bold w-1/2"
+          class="rich-text mt-4 text-black tracking-[-.02em] leading-none font-medium w-1/2"
           v-html="introText"
         ></div>
 

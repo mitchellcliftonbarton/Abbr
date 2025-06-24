@@ -60,6 +60,7 @@ const props = defineProps({
 
 // define refs
 const section = ref(null)
+const scrollTriggerInstance = ref(null)
 
 const route = useRoute()
 
@@ -119,7 +120,7 @@ const handleIdeaClick = () => {
 onMounted(() => {
   // setScrollPosition()
 
-  ScrollTrigger.create({
+  scrollTriggerInstance.value = ScrollTrigger.create({
     trigger: section.value,
     start: 'top 75%',
     scrub: false,
@@ -133,8 +134,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (scrollTrigger.value) {
-    scrollTrigger.value.kill()
+  if (scrollTriggerInstance.value) {
+    scrollTriggerInstance.value.kill()
   }
 })
 </script>

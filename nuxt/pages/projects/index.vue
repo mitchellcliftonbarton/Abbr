@@ -21,7 +21,7 @@
 
       <div class="grid grid-cols-6 gap-4 mt-8">
         <ProjectItemAlt
-          v-for="project in archiveProjectsToShow"
+          v-for="(project, index) in archiveProjectsToShow"
           :key="`archive-${project.id}-${route.fullPath}`"
           :project="project"
           class="enter-in-fade-up"
@@ -83,6 +83,14 @@ const archiveProjectsToShow = computed(() => {
     (project) => !featuredProjectsToShow.value.some((featuredProject) => featuredProject.id === project.id)
   )
 })
+
+// watch the 'sector' url param route change
+watch(
+  () => route.query.service,
+  () => {
+    window.scrollTo(0, 0)
+  }
+)
 </script>
 
 <style scoped lang="postcss">

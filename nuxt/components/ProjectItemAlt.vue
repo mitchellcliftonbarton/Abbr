@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="`/projects/${project.slug}`"
+    :to="archiveLink || `/projects/${project.slug}`"
     class="project-item-alt aspect-[6/2] grid grid-cols-4 border border-grey-2 rounded-2xl overflow-hidden"
   >
     <div class="col-span-1 h-full relative">
@@ -51,6 +51,10 @@ const projectSectorsString = computed(() => {
 
 const mainImage = computed(() => {
   return props.project.projectData.mainImage.node
+})
+
+const archiveLink = computed(() => {
+  return props.project.projectData?.archiveLink?.url
 })
 </script>
 

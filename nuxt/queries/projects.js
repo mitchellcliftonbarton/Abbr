@@ -9,7 +9,7 @@ export async function getProjectsData({ runTimeConfig }) {
         {
           global {
             globalData {
-              featuredProjects {
+              featuredProjects(first: 1000) {
                 nodes {
                   ... on Project {
                     id
@@ -48,7 +48,7 @@ export async function getProjectsData({ runTimeConfig }) {
               }
             }
           }
-          projects {
+          projects(first: 1000) {
             nodes {
               id
               slug
@@ -66,6 +66,9 @@ export async function getProjectsData({ runTimeConfig }) {
                       }
                     }
                   }
+                }
+                archiveLink {
+                  url
                 }
               }
               projectServiceCategories {

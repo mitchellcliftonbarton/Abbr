@@ -21,6 +21,9 @@ const props = defineProps({
   },
 })
 
+// get runtime config
+const runTimeConfig = useRuntimeConfig()
+
 // vars
 const linkUrl = ref(null)
 const targetAttribute = ref(null)
@@ -35,7 +38,7 @@ const generateLinkUrl = (href) => {
     if (cleanHref.startsWith('mailto:')) {
       return {
         url: cleanHref,
-        target: null,
+        target: '_blank',
       }
     }
 
@@ -47,11 +50,22 @@ const generateLinkUrl = (href) => {
       }
     }
 
-    // If it's an absolute URL, create URL object
+    // If it's an absolute URL, check if it's external
     const url = new URL(cleanHref)
-    return {
-      url: url.pathname + url.hash,
-      target: null,
+    const isExternal = !runTimeConfig.public.allowedHostnames.includes(url.hostname)
+
+    if (isExternal) {
+      // External link - return full URL and open in new tab
+      return {
+        url: cleanHref,
+        target: '_blank',
+      }
+    } else {
+      // Internal absolute URL - return pathname, search params, and hash
+      return {
+        url: url.pathname + url.search + url.hash,
+        target: null,
+      }
     }
   } catch (e) {
     // If URL parsing fails, return the original href

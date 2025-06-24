@@ -64,6 +64,7 @@ const props = defineProps({
 
 // define refs
 const section = ref(null)
+const scrollTriggerInstance = ref(null)
 
 // define data
 const headline = computed(() => props.module?.headline)
@@ -72,7 +73,7 @@ const text = computed(() => props.module?.text)
 const image = computed(() => props.module?.image?.node)
 
 onMounted(() => {
-  ScrollTrigger.create({
+  scrollTriggerInstance.value = ScrollTrigger.create({
     trigger: section.value,
     start: 'top 75%',
     scrub: false,
@@ -86,8 +87,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (scrollTrigger.value) {
-    scrollTrigger.value.kill()
+  if (scrollTriggerInstance.value) {
+    scrollTriggerInstance.value.kill()
   }
 })
 </script>

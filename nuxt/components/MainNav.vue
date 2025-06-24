@@ -1,7 +1,7 @@
 <template>
   <header
     id="main-nav"
-    class="fixed top-0 left-0 px-8 py-6 flex justify-between items-center w-full font-semibold"
+    class="fixed top-0 left-0 px-8 py-6 flex justify-between items-center w-full font-medium"
   >
     <nuxt-link
       to="/"
@@ -70,11 +70,11 @@ const serviceCategories = useState('serviceCategories')
 
     svg {
       width: 12px;
-      transform: translateY(-0.1em);
+      transform: translateY(0.05em);
     }
   }
 
-  a {
+  a:not(.project-filter-link) {
     transition: opacity 0.2s;
 
     &:hover {

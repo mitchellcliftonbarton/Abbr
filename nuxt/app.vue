@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator
-      color="red"
+      color="#00d719"
       :height="5"
     />
 

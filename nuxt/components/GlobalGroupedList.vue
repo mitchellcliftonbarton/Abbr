@@ -76,10 +76,11 @@ const groups = computed(() => props.module?.groups)
 
 // define refs
 const section = ref(null)
+const scrollTriggerInstance = ref(null)
 
 // define methods
 onMounted(() => {
-  ScrollTrigger.create({
+  scrollTriggerInstance.value = ScrollTrigger.create({
     trigger: section.value,
     start: 'top 75%',
     scrub: false,
@@ -93,8 +94,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (scrollTrigger.value) {
-    scrollTrigger.value.kill()
+  if (scrollTriggerInstance.value) {
+    scrollTriggerInstance.value.kill()
   }
 })
 </script>
@@ -114,8 +115,7 @@ onUnmounted(() => {
       pointer-events: none;
     }
 
-    .text,
-    .title {
+    .text {
       transition: transform 0.2s;
     }
 
@@ -128,8 +128,7 @@ onUnmounted(() => {
         pointer-events: auto;
       }
 
-      .text,
-      .title {
+      .text {
         transform: translateX(-100px);
       }
     }
