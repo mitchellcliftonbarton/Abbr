@@ -80,11 +80,11 @@ const footerLinks = computed(() => {
 
 // define refs
 const footer = ref(null)
-const scrollTrigger = ref(null)
+const scrollTriggerInstance = ref(null)
 
 // define methods
 onMounted(() => {
-  scrollTrigger.value = ScrollTrigger.create({
+  scrollTriggerInstance.value = ScrollTrigger.create({
     trigger: footer.value,
     start: 'top 85%',
     scrub: false,
@@ -94,18 +94,18 @@ onMounted(() => {
   })
 
   $listen('update-scroll-triggers', () => {
-    if (scrollTrigger.value) {
-      scrollTrigger.value.refresh()
+    if (scrollTriggerInstance.value) {
+      scrollTriggerInstance.value.refresh()
     }
   })
 })
 
 watch(route, () => {
-  if (scrollTrigger.value) {
+  if (scrollTriggerInstance.value) {
     visible.value = false
 
     nextTick(() => {
-      scrollTrigger.value.refresh()
+      scrollTriggerInstance.value.refresh()
     })
   }
 })

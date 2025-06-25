@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="backgroundImage && carouselItems.length"
-    class="global-mini-carousel global-module h-[100svh] w-full max-h-[900px] min-h-[500px] relative bg-grey-1 flex justify-center items-center"
+    class="global-mini-carousel global-module h-[100svh] w-full lg:max-h-[900px] min-h-[500px] relative bg-grey-1 flex justify-center items-center"
   >
     <figure class="fill-parent">
       <DefImage
@@ -10,8 +10,8 @@
       />
     </figure>
 
-    <div class="carousel-wrapper block w-1/4 aspect-[4/5.8] relative rounded-xl flex flex-col justify-between">
-      <div class="flex justify-between items-center flex-none p-6">
+    <div class="carousel-wrapper block w-5/6 lg:w-1/4 aspect-[4/5.8] relative rounded-xl flex flex-col justify-between">
+      <div class="flex justify-between items-center flex-none p-4 lg:p-6">
         <h2
           v-if="carouselTitle"
           class="text-sm uppercase text-grey-2 tracking-default leading-none font-medium"

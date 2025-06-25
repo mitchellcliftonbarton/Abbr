@@ -2,7 +2,7 @@
   <section class="pt-40">
     <div
       v-if="featuredProjectsToShow.length > 0"
-      class="featured-projects grid grid-cols-3"
+      class="featured-projects grid grid-cols-1 lg:grid-cols-3"
     >
       <ProjectItem
         v-for="(project, index) in featuredProjectsToShow"
@@ -15,11 +15,11 @@
 
     <div
       v-if="archiveProjectsToShow.length > 0"
-      class="all-projects px-8 enter-in-fade animation-delay-200"
+      class="all-projects px-4 lg:px-8 enter-in-fade animation-delay-200"
     >
       <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Archive</h2>
 
-      <div class="grid grid-cols-6 gap-4 mt-8">
+      <div class="grid grid-cols-2 lg:grid-cols-6 gap-4 mt-8">
         <ProjectItemAlt
           v-for="(project, index) in archiveProjectsToShow"
           :key="`archive-${project.id}-${route.fullPath}`"

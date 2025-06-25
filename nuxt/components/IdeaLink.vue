@@ -2,12 +2,12 @@
   <nuxt-link
     :href="link"
     :data-slug="slug"
-    class="idea-link flex-none aspect-[6/2] w-[200px] relative border border-grey-2 rounded-xl overflow-hidden"
+    class="idea-link flex-none aspect-[2/1] lg:aspect-[6/2] w-[150px] lg:w-[200px] relative border border-grey-2 rounded-xl overflow-hidden"
     :class="{ active: isActive }"
     @click.prevent="handleClick"
   >
-    <div class="inner flex">
-      <div class="view">
+    <div class="inner flex h-full">
+      <div class="view hidden lg:block">
         <p class="font-secondary uppercase text-xs p-2">View</p>
       </div>
 
@@ -106,24 +106,37 @@ const handleClick = () => {
   }
 
   .image {
-    width: 25%;
+    width: 35%;
     flex: none;
+
+    @media screen and (min-width: 1024px) {
+      width: 25%;
+    }
   }
 
   .titles {
-    width: 75%;
+    width: 65%;
     flex: none;
     transition: background-color 0.2s;
+
+    @media screen and (min-width: 1024px) {
+      width: 75%;
+    }
   }
 
   .inner {
     transition: transform 0.2s;
-    transform: translateX(-75%);
+
+    @media screen and (min-width: 1024px) {
+      transform: translateX(-75%);
+    }
   }
 
-  &:hover {
-    .inner {
-      transform: translateX(0%);
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      .inner {
+        transform: translateX(0%);
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
-  <section class="grid grid-cols-12 gap-8 px-8">
-    <div class="col-span-6">
+  <section class="grid grid-cols-12 gap-8 px-4 lg:px-8">
+    <div class="col-span-12 lg:col-span-6 order-last lg:order-first">
       <h2
         v-if="module.title"
         class="uppercase text-sm font-medium"
@@ -16,7 +16,7 @@
     </div>
 
     <div
-      class="image col-span-6"
+      class="image col-span-12 lg:col-span-6 order-first lg:order-last"
       :class="aspectRatio.class"
     >
       <figure
@@ -89,7 +89,11 @@ const aspectRatio = computed(() => {
 .image {
   &.portrait {
     figure {
-      width: 70%;
+      width: 100%;
+
+      @media screen and (min-width: 1024px) {
+        width: 70%;
+      }
     }
   }
 

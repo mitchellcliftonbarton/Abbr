@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="`/projects/${project.slug}`"
-    class="project-item grid grid-cols-2 gap-8 p-8"
+    class="project-item grid grid-cols-2 gap-6 lg:gap-8 p-4 lg:p-8"
   >
     <figure class="aspect-[4/5] col-span-1 rounded-2xl overflow-hidden bg-grey-1">
       <video
@@ -90,12 +90,14 @@ const mainVideo = computed(() => {
     pointer-events: none;
   }
 
-  &:hover {
-    background-color: var(--color-grey-1);
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      background-color: var(--color-grey-1);
 
-    .intro-text {
-      opacity: 1;
-      pointer-events: auto;
+      .intro-text {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 }

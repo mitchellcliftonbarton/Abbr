@@ -96,8 +96,8 @@ onMounted(() => {
   })
 
   $listen('update-scroll-triggers', () => {
-    if (scrollTrigger.value) {
-      scrollTrigger.value.refresh()
+    if (scrollTriggerInstance.value) {
+      scrollTriggerInstance.value.refresh()
     }
   })
 })
@@ -128,17 +128,19 @@ onUnmounted(() => {
       transition: transform 0.2s;
     }
 
-    &:hover {
-      background-color: var(--color-grey-1);
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        background-color: var(--color-grey-1);
 
-      .def-button,
-      .subtitle {
-        opacity: 1;
-        pointer-events: auto;
-      }
+        .def-button,
+        .subtitle {
+          opacity: 1;
+          pointer-events: auto;
+        }
 
-      .text {
-        transform: translateX(-100px);
+        .text {
+          transform: translateX(-100px);
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <section class="grid grid-cols-12 gap-8 px-8">
-      <div class="intro col-span-6 pt-20 enter-in-fade-up animation-delay-100">
+    <section class="grid grid-cols-12 gap-8 px-4 lg:px-8">
+      <div class="intro col-span-12 lg:col-span-6 pt-20 enter-in-fade-up animation-delay-100">
         <div class="font-medium">
           <p>for</p>
           <h1>{{ clientName ?? projectTitle }}</h1>
@@ -40,9 +40,9 @@
 
       <div
         v-if="mainVideo || mainImage"
-        class="enter-in-fade-up animation-delay-200 col-span-6 pt-6"
+        class="enter-in-fade-up animation-delay-200 col-span-12 lg:col-span-6 pt-20 lg:pt-6"
       >
-        <figure class="aspect-[4/5] w-[70%] mx-auto rounded-2xl overflow-hidden bg-grey-1">
+        <figure class="aspect-[4/5] w-full lg:w-[70%] mx-auto rounded-2xl overflow-hidden bg-grey-1">
           <video
             v-if="mainVideo"
             :src="mainVideo"
@@ -73,13 +73,13 @@
     />
 
     <section class="related-projects enter-in-fade-up animation-delay-300">
-      <div class="px-8">
+      <div class="px-4 lg:px-8">
         <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium border-b border-black pb-4">
           Related Projects
         </h2>
       </div>
 
-      <div class="grid grid-cols-3 gap-4 pt-[1.8rem]">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-[1.8rem]">
         <ProjectItem
           v-for="project in relatedProjects"
           :key="project.id"

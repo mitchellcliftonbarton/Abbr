@@ -1,6 +1,6 @@
 <template>
-  <div class="idea-content-item grid grid-cols-10 gap-6 px-6">
-    <div class="col-span-4">
+  <div class="idea-content-item grid grid-cols-10 gap-6 px-4 lg:px-6">
+    <div class="hidden lg:block col-span-4">
       <figure class="aspect-[4/5] w-full rounded-2xl overflow-hidden">
         <DefImage
           :image-data="mainImage"
@@ -9,7 +9,7 @@
       </figure>
     </div>
 
-    <div class="text-container col-span-6 pb-8">
+    <div class="text-container col-span-10 lg:col-span-6 pb-8">
       <div
         class="text rich-text"
         v-html="text"

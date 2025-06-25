@@ -1,7 +1,7 @@
 <template>
   <header
     id="main-nav"
-    class="fixed top-0 left-0 px-8 py-6 flex justify-between items-center w-full font-medium pointer-events-none"
+    class="fixed top-0 left-0 px-4 lg:px-8 py-6 flex justify-between items-center w-full font-medium pointer-events-none"
   >
     <nuxt-link
       to="/"
@@ -11,16 +11,27 @@
       <span class="block md:hidden">Abbr.</span>
     </nuxt-link>
 
-    <div
-      v-if="route.name === 'projects'"
-      class="flex items-center gap-8 pointer-events-auto"
-    >
-      <FilterLink
-        v-for="category in serviceCategories"
-        :key="category.slug"
-        :category="category"
-      />
-    </div>
+    <template v-if="route.name === 'projects'">
+      <div class="hidden lg:flex items-center gap-8 pointer-events-auto">
+        <FilterLink
+          v-for="category in serviceCategories"
+          :key="category.slug"
+          :category="category"
+        />
+      </div>
+
+      <button
+        class="filter-button flex lg:hidden items-center gap-2 pointer-events-auto"
+        :class="{ active: mobileMenuOpen }"
+        @click="mobileMenuOpen = !mobileMenuOpen"
+      >
+        <p>Projects</p>
+        <div>
+          <Plus />
+          <X />
+        </div>
+      </button>
+    </template>
 
     <nuxt-link
       v-else
@@ -33,11 +44,16 @@
 
 <script setup>
 import FilterLink from '~/components/FilterLink.vue'
+import Plus from '~/components/Plus.vue'
+import X from '~/components/X.vue'
 
 const route = useRoute()
 
 // get service categories
 const serviceCategories = useState('serviceCategories')
+
+// get mobile menu open state
+const mobileMenuOpen = useState('mobileMenuOpen')
 </script>
 
 <style lang="postcss">
@@ -79,8 +95,43 @@ const serviceCategories = useState('serviceCategories')
   a:not(.project-filter-link) {
     transition: opacity 0.2s;
 
-    &:hover {
-      opacity: 0.5;
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .filter-button {
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(0.05em);
+      width: 12px;
+      height: 12px;
+
+      .plus-icon {
+        display: inline-block;
+        width: 12px;
+      }
+
+      .x-icon {
+        display: none;
+        width: 11px;
+      }
+    }
+
+    &.active {
+      & > div {
+        .plus-icon {
+          display: none;
+        }
+
+        .x-icon {
+          display: inline-block;
+        }
+      }
     }
   }
 }

@@ -3,10 +3,10 @@
     ref="section"
     v-if="ideas"
     id="all-ideas"
-    class="global-ideas-list global-module px-8"
+    class="global-ideas-list global-module lg:px-8"
   >
     <div
-      class="ideas-container bg-grey-1 w-5/6 mx-auto max-w-[900px] rounded-2xl relative flex flex-col justify-between gap-6 overflow-hidden"
+      class="ideas-container bg-grey-1 w-full lg:w-5/6 mx-auto max-w-[900px] rounded-2xl relative flex flex-col justify-between gap-6 overflow-hidden"
     >
       <div class="titles px-6 pt-6 flex-none">
         <div class="flex justify-between items-center border-b border-grey-2 pb-4">
@@ -18,7 +18,7 @@
 
       <div
         ref="ideasContainer"
-        class="all-ideas flex-none flex flex-nowrap gap-2 px-6 overflow-x-auto"
+        class="all-ideas flex-none flex flex-nowrap gap-3 lg:gap-2 px-6 overflow-x-auto"
       >
         <IdeaLink
           v-for="(idea, index) in ideas"
@@ -108,7 +108,7 @@ const handleIdeaClick = () => {
 watch(
   () => route.query.idea,
   () => {
-    $event.emit('update-scroll-triggers')
+    $event('update-scroll-triggers')
   }
 )
 

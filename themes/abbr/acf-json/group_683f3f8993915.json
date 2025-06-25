@@ -51,6 +51,30 @@
             "graphql_field_name": "mainImage"
         },
         {
+            "key": "field_685b2163d33f5",
+            "label": "Main Video",
+            "name": "main_video",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Will be used in place of the main image if present.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ".mp4",
+            "allow_in_bindings": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "mainVideo"
+        },
+        {
             "key": "field_683f42044c12d",
             "label": "Client Name",
             "name": "client_name",
@@ -317,6 +341,97 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_685b21b548967": {
+                    "key": "layout_685b21b548967",
+                    "name": "carousel",
+                    "label": "Carousel",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_685b21b948969",
+                            "label": "Carousel Media",
+                            "name": "carousel_media",
+                            "aria-label": "",
+                            "type": "gallery",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min": "",
+                            "max": "",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ".jpg, .mp4, .png, .webp, .avif, .jpeg",
+                            "insert": "append",
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "carouselMedia"
+                        },
+                        {
+                            "key": "field_685b2c186350f",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "title",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_685b2c1d63510",
+                            "label": "Caption",
+                            "name": "caption",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "caption",
+                            "graphql_non_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -326,6 +441,63 @@
             "graphql_description": "",
             "graphql_field_name": "modules",
             "graphql_non_null": 0
+        },
+        {
+            "key": "field_685b218a1ab42",
+            "label": "Related",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "relatedProjects",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_685b21991ab43",
+            "label": "Related Projects",
+            "name": "related_projects",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "project"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "elements": "",
+            "bidirectional": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "relatedProjects",
+            "graphql_connection_type": "one_to_many",
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -350,5 +522,5 @@
     "graphql_field_name": "projectData",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1750796827
+    "modified": 1750805544
 }

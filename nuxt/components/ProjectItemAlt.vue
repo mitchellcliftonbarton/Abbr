@@ -105,9 +105,11 @@ const archiveLink = computed(() => {
     transform: translateX(-75%);
   }
 
-  &:hover {
-    .inner {
-      transform: translateX(0%);
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      .inner {
+        transform: translateX(0%);
+      }
     }
   }
 }

@@ -92,8 +92,8 @@ onMounted(() => {
   })
 
   $listen('update-scroll-triggers', () => {
-    if (scrollTrigger.value) {
-      scrollTrigger.value.refresh()
+    if (scrollTriggerInstance.value) {
+      scrollTriggerInstance.value.refresh()
     }
   })
 })

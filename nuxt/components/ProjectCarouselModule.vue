@@ -1,6 +1,6 @@
 <template>
-  <section class="grid grid-cols-12 gap-8 px-8">
-    <div class="col-span-6">
+  <section class="grid grid-cols-12 gap-8 px-4 lg:px-8">
+    <div class="col-span-12 lg:col-span-6 order-last lg:order-first">
       <h2
         v-if="module.title"
         class="uppercase text-sm font-medium"
@@ -16,7 +16,7 @@
     </div>
 
     <div
-      class="carousel-container col-span-6"
+      class="carousel-container col-span-12 lg:col-span-6 order-first lg:order-last"
       :class="aspectRatio.class"
     >
       <div
@@ -186,7 +186,11 @@ onBeforeUnmount(() => {
 .carousel-container {
   &.portrait {
     .carousel {
-      width: 70%;
+      width: 100%;
+
+      @media screen and (min-width: 1024px) {
+        width: 70%;
+      }
     }
   }
 
