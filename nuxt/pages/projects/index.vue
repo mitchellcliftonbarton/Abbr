@@ -4,13 +4,14 @@
       v-if="featuredProjectsToShow.length > 0"
       class="featured-projects grid grid-cols-1 lg:grid-cols-3"
     >
-      <ProjectItem
+      <div
         v-for="(project, index) in featuredProjectsToShow"
         :key="`featured-${project.id}-${route.fullPath}`"
-        :project="project"
-        class="enter-in-fade-up"
+        class="col-span-1 enter-in-fade-up"
         :style="{ animationDelay: `${index * 50}ms` }"
-      />
+      >
+        <ProjectItem :project="project" />
+      </div>
     </div>
 
     <div

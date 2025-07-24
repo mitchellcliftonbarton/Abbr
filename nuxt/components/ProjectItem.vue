@@ -82,11 +82,11 @@ const mainVideo = computed(() => {
 <style scoped lang="postcss">
 .project-item {
   background-color: transparent;
-  transition: background-color 0.2s;
+  transition: background-color 0.4s;
 
   .intro-text {
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity 0.4s;
     pointer-events: none;
   }
 
