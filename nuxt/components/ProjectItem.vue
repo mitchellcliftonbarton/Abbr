@@ -36,7 +36,7 @@
 
       <div
         v-if="projectIntroText"
-        class="intro-text mt-8 text-base text-black tracking-default leading-none font-medium"
+        class="intro-text mt-8 text-base text-black tracking-default leading-none"
         v-html="projectIntroText"
       ></div>
     </div>
