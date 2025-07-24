@@ -20,12 +20,10 @@
     </div>
 
     <div v-if="featuredProjects.length">
-      <div
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave"
-        class="project-items-container mt-12 hidden lg:block"
-      >
+      <div class="project-items-container mt-12 hidden lg:block">
         <FeaturedProjectItem
+          @mouseenter="handleMouseEnter"
+          @mouseleave="handleMouseLeave"
           v-for="(projectItem, index) in featuredProjects"
           :key="projectItem.project.nodes[0].id"
           :project-item="projectItem"
@@ -41,7 +39,10 @@
           :loop="true"
           :grab-cursor="true"
         >
-          <swiper-slide v-for="(projectItem, index) in featuredProjects">
+          <swiper-slide
+            v-for="(projectItem, index) in featuredProjects"
+            :key="projectItem.project.nodes[0].id"
+          >
             <DynamicLink
               :href="`/projects/${projectItem.project.nodes[0].slug}`"
               class="flex flex-col bg-grey-1 fill-parent"
@@ -61,7 +62,19 @@
                   class="text-base text-black font-medium leading-none tracking-default"
                 />
 
-                <div class="def-button">View Project</div>
+                <div class="flex justify-between items-end w-full">
+                  <div class="def-button">View Project</div>
+
+                  <div class="dots flex items-center gap-3">
+                    <span
+                      v-for="(project, i) in featuredProjects"
+                      :key="project.project.nodes[0].id"
+                      :class="{
+                        active: i === index,
+                      }"
+                    ></span>
+                  </div>
+                </div>
               </div>
             </DynamicLink>
           </swiper-slide>
@@ -114,22 +127,27 @@ onMounted(() => {
 
   if (isLargeQuery.value) {
     // define scroll trigger
+    const globalFeaturedProjects = document.querySelector('.global-featured-projects')
+    const titles = document.querySelector('.global-featured-projects .titles')
+    const titlesHeight = titles.offsetHeight * 2
     const projectItemsContainer = document.querySelector('.project-items-container')
     const projectItems = Array.from(document.querySelectorAll('.project-item'))
     const projectItemsContainerHeight = projectItemsContainer.offsetHeight
+
     const tl = gsap.timeline({
       paused: true,
       scrollTrigger: {
-        trigger: projectItemsContainer,
-        start: 'top 52',
-        end: `+=${projectItemsContainerHeight * (projectItems.length + 1)}px`,
+        trigger: globalFeaturedProjects,
+        start: 'top 65',
+        end: `+=${projectItemsContainerHeight * (projectItems.length + 1) + titlesHeight}px`,
         scrub: true,
         pin: true,
       },
     })
+
     const baseHeight = 15
     const totalInactiveItemsHeight = (projectItems.length - 1) * baseHeight
-    const remainderHeight = projectItemsContainerHeight - totalInactiveItemsHeight
+    const remainderHeight = projectItemsContainerHeight - totalInactiveItemsHeight - titlesHeight
 
     // first set initial heights
     projectItems.forEach((item, index) => {
@@ -187,6 +205,21 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
+
+    .swiper-slide {
+      .dots {
+        span {
+          width: 10px;
+          height: 10px;
+          background-color: rgba(0, 0, 0, 0.4);
+          border-radius: 50%;
+
+          &.active {
+            background-color: black;
+          }
+        }
+      }
+    }
   }
 }
 </style>

@@ -361,6 +361,10 @@ Modules
     }
   }
 
+  &.cl-lg {
+    font-size: var(--text-sm);
+  }
+
   @media screen and (min-width: 1024px) {
     &:hover {
       &::before {

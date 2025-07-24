@@ -28,28 +28,32 @@
       v-for="group in groups"
       :href="group.link.url"
       :key="group.id"
-      class="group-item grid grid-cols-12 gap-8 border-b border-black px-8 pt-3 pb-6"
+      class="group-item grid grid-cols-12 gap-8 border-b border-black px-6 lg:px-8 pt-3 pb-6"
     >
-      <div class="group-item-title col-span-8">
-        <h3 class="title text-base lg:text-lg text-grey-3 tracking-default leading-none font-medium">
+      <div class="group-item-title col-span-6 lg:col-span-8">
+        <h3 class="title text-base lg:text-lg text-black lg:text-grey-3 tracking-default leading-none lg:font-medium">
           {{ group.title }}
         </h3>
 
         <div
           v-html="group.subtitle"
-          class="subtitle text-base lg:text-lg text-grey-2 tracking-default leading-none font-medium w-1/2 max-w-[500px]"
+          class="subtitle text-base lg:text-lg text-grey-2 tracking-default leading-[1.1] lg:leading-none lg:font-medium w-full lg:w-1/2 max-w-[500px] mt-4 lg:mt-0"
         ></div>
       </div>
 
-      <div class="col-span-4 relative">
+      <div class="col-span-6 lg:col-span-4 relative">
         <div
           v-html="nl2br(group.text)"
-          class="text text-base lg:text-lg text-grey-3 tracking-default leading-none font-medium"
+          class="text text-base lg:text-lg text-grey-2 lg:text-grey-3 tracking-default leading-[1.1] lg:leading-none lg:font-medium"
         ></div>
 
         <div class="def-button absolute top-0 right-0">
           {{ group.link.title }}
         </div>
+      </div>
+
+      <div class="col-span-12 lg:hidden mt-[50px]">
+        <p class="circle-link cl-lg">{{ group.link.title }}</p>
       </div>
     </DynamicLink>
   </section>
@@ -112,16 +116,33 @@ onUnmounted(() => {
 <style scoped lang="postcss">
 .global-grouped-list {
   opacity: 0;
-  transform: translateY(20px);
+  /* transform: translateY(20px); */
+
+  @media screen and (min-width: 1024px) {
+    margin-top: -60svh;
+  }
 
   .group-item {
     transition: background-color 0.2s;
 
-    .def-button,
-    .subtitle {
+    .def-button {
       opacity: 0;
-      transition: opacity 0.2s;
       pointer-events: none;
+      transition: opacity 0.2s;
+      display: none;
+
+      @media screen and (min-width: 1024px) {
+        display: flex;
+      }
+    }
+
+    .subtitle {
+      transition: opacity 0.2s;
+
+      @media screen and (min-width: 1024px) {
+        opacity: 0;
+        pointer-events: none;
+      }
     }
 
     .text {

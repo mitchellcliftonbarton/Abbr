@@ -14,12 +14,13 @@ export async function getPageData({ runTimeConfig, url }) {
                 ... on HomeModulesIdeasListLayout {
                   type
                   fieldGroupName
-                  featuredIdeas {
+                  featuredIdeas(first: 100) {
                     nodes {
                       id
                       slug
                       ... on Post {
                         id
+                        title
                         idea {
                           text
                           mainImage {

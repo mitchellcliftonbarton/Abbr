@@ -28,7 +28,6 @@
         <p>Projects</p>
         <div>
           <Plus />
-          <X />
         </div>
       </button>
     </template>
@@ -114,23 +113,25 @@ const mobileMenuOpen = useState('mobileMenuOpen')
       .plus-icon {
         display: inline-block;
         width: 12px;
+        transition: transform 0.2s;
       }
 
-      .x-icon {
+      /* .x-icon {
         display: none;
         width: 11px;
-      }
+      } */
     }
 
     &.active {
       & > div {
         .plus-icon {
-          display: none;
+          /* display: none; */
+          transform: rotate(45deg);
         }
 
-        .x-icon {
+        /* .x-icon {
           display: inline-block;
-        }
+        } */
       }
     }
   }

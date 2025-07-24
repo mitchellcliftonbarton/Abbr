@@ -51,7 +51,9 @@ const mobileMenuOpen = useState('mobileMenuOpen')
 
   .project-filter-link {
     opacity: 0.5;
-    transition: opacity 0.2s;
+    transition:
+      opacity 0.2s,
+      color 0.2s;
 
     .num-container {
       display: flex;
@@ -72,6 +74,7 @@ const mobileMenuOpen = useState('mobileMenuOpen')
 
     &.active {
       opacity: 1;
+      color: var(--color-green);
     }
   }
 }

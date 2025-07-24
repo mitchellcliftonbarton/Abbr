@@ -3,12 +3,12 @@
     ref="section"
     v-if="ideas"
     id="all-ideas"
-    class="global-ideas-list global-module lg:px-8"
+    class="global-ideas-list global-module px-6 lg:px-8"
   >
     <div
       class="ideas-container bg-grey-1 w-full lg:w-5/6 mx-auto max-w-[900px] rounded-2xl relative flex flex-col justify-between gap-6 overflow-hidden"
     >
-      <div class="titles px-6 pt-6 flex-none">
+      <div class="titles px-6 pt-2 lg:pt-6 flex-none">
         <div class="flex justify-between items-center border-b border-grey-2 pb-4">
           <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Abbr. Ideas</h2>
 
@@ -77,25 +77,29 @@ const ideas = computed(() => {
     return allPosts.value
   }
 
-  return featuredIdeas.value
+  return featuredIdeas.value?.nodes
 })
 
 const ideaSlug = computed(() => route.query.idea)
 
 const currentIdea = computed(() => {
-  if (ideaSlug.value) {
-    return allPosts.value.find((idea) => idea.slug === ideaSlug.value)
+  if (ideaSlug?.value) {
+    return allPosts.value.find((idea) => idea?.slug === ideaSlug?.value)
   }
 
   return ideas.value[0]
 })
 
 const linkToCopy = computed(() => {
-  if (process.client) {
-    return `${window.location.origin}?idea=${currentIdea.value.slug}`
+  if (!currentIdea?.value) {
+    return ''
   }
 
-  return `/?idea=${currentIdea.value.slug}`
+  if (process.client) {
+    return `${window.location.origin}?idea=${currentIdea?.value?.slug}`
+  }
+
+  return `/?idea=${currentIdea?.value?.slug}`
 })
 
 const handleIdeaClick = () => {
@@ -112,30 +116,7 @@ watch(
   }
 )
 
-// const setScrollPosition = () => {
-//   if (ideaSlug.value) {
-//     const ideaLinks = Array.from(ideasContainer.value.querySelectorAll('.idea-link'))
-
-//     const link = ideaLinks.find((link) => link.dataset.slug === ideaSlug.value)
-
-//     if (link) {
-//       ideasContainer.value.scrollTo({
-//         left: link.offsetLeft - 15,
-//         behavior: 'smooth',
-//       })
-//     }
-//   }
-// }
-
-// watch(ideaSlug, () => {
-//   if (ideaSlug.value) {
-//     setScrollPosition()
-//   }
-// })
-
 onMounted(() => {
-  // setScrollPosition()
-
   scrollTriggerInstance.value = ScrollTrigger.create({
     trigger: section.value,
     start: 'top 75%',

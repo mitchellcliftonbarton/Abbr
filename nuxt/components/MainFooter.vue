@@ -3,7 +3,6 @@
     ref="footer"
     id="main-footer"
     class="p-4 lg:p-8"
-    :class="{ visible: visible }"
   >
     <div class="inner p-4 lg:p-6 rounded-2xl flex flex-col justify-between items-center">
       <div class="inner-item flex justify-between items-start w-full pb-[178px]">
@@ -55,11 +54,8 @@ import Logo from '~/components/Logo.vue'
 import Play from '~/components/Play.vue'
 import DynamicLink from '~/components/DynamicLink.vue'
 import { nl2br } from '~/lib/utils'
-import { gsap, ScrollTrigger } from 'gsap/all'
-gsap.registerPlugin(ScrollTrigger)
 
 const footerData = useState('footerData')
-const visible = ref(false)
 const route = useRoute()
 
 // get event bus
@@ -80,35 +76,6 @@ const footerLinks = computed(() => {
 
 // define refs
 const footer = ref(null)
-const scrollTriggerInstance = ref(null)
-
-// define methods
-onMounted(() => {
-  scrollTriggerInstance.value = ScrollTrigger.create({
-    trigger: footer.value,
-    start: 'top 85%',
-    scrub: false,
-    onEnter: () => {
-      visible.value = true
-    },
-  })
-
-  $listen('update-scroll-triggers', () => {
-    if (scrollTriggerInstance.value) {
-      scrollTriggerInstance.value.refresh()
-    }
-  })
-})
-
-watch(route, () => {
-  if (scrollTriggerInstance.value) {
-    visible.value = false
-
-    nextTick(() => {
-      scrollTriggerInstance.value.refresh()
-    })
-  }
-})
 </script>
 
 <style scoped lang="postcss">
@@ -118,13 +85,13 @@ watch(route, () => {
   .inner {
     background-color: black;
 
-    .inner-item {
+    /* .inner-item {
       opacity: 0;
       transform: translateY(10px);
       transition:
         opacity 2s var(--curve),
         transform 2s var(--curve);
-    }
+    } */
   }
 
   .logo-icon {
@@ -135,11 +102,11 @@ watch(route, () => {
     }
   }
 
-  &.visible {
+  /* &.visible {
     .inner .inner-item {
       opacity: 1;
       transform: translateY(0);
     }
-  }
+  } */
 }
 </style>

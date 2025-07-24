@@ -1,6 +1,7 @@
 <template>
   <nuxt-link
     :to="archiveLink || `/projects/${project.slug}`"
+    target="_blank"
     class="project-item-alt aspect-[6/2] border border-grey-2 rounded-2xl overflow-hidden"
   >
     <div class="inner flex h-full">
@@ -48,11 +49,11 @@ const projectTitle = computed(() => {
 })
 
 const projectSectors = computed(() => {
-  return props.project.projectServiceCategories.nodes
+  return props.project.projectSectors.nodes
 })
 
 const projectSectorsString = computed(() => {
-  return props.project.projectServiceCategories.nodes.map((sector) => sector.name).join(', ')
+  return props.project.projectSectors.nodes.map((sector) => sector.name).join(', ')
 })
 
 const mainImage = computed(() => {

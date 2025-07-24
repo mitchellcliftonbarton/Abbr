@@ -9,7 +9,7 @@
 
         <div
           v-if="introText"
-          class="rich-text mt-4 text-black tracking-default leading-none font-medium w-1/2"
+          class="rich-text mt-4 text-black tracking-default leading-none font-medium w-full lg:w-1/2"
           v-html="introText"
         ></div>
 
@@ -17,10 +17,10 @@
           v-if="services"
           class="services"
         >
-          <h2 class="square-title uppercase text-grey-2 font-secondary text-sm">Services</h2>
+          <h2 class="uppercase text-grey-2 font-secondary text-sm">Services</h2>
 
           <div
-            class="rich-text mt-4 text-sm uppercase font-medium leading-none"
+            class="rich-text mt-2 font-secondary text-sm uppercase"
             v-html="services"
           ></div>
         </div>
@@ -29,10 +29,10 @@
           v-if="team"
           class="team"
         >
-          <h2 class="square-title uppercase text-grey-2 font-secondary text-sm">Team</h2>
+          <h2 class="uppercase text-grey-2 font-secondary text-sm">Team</h2>
 
           <div
-            class="rich-text mt-4 text-sm uppercase font-medium leading-none"
+            class="rich-text mt-2 font-secondary text-sm uppercase"
             v-html="team"
           ></div>
         </div>

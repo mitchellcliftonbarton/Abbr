@@ -58,11 +58,11 @@ const props = defineProps({
 
 // computed
 const slug = computed(() => props.idea.slug)
-const mainImage = computed(() => props.idea.idea.mainImage?.node)
-const title = computed(() => props.idea.title)
-const wordCount = computed(() => props.idea.idea.text.split(' ').length)
-const text = computed(() => props.idea.idea.text)
-const link = computed(() => `/?idea=${slug.value}`)
+const mainImage = computed(() => props.idea?.idea?.mainImage?.node)
+const title = computed(() => props?.idea?.title)
+const wordCount = computed(() => props?.idea?.idea?.text?.split(' ').length)
+const text = computed(() => props?.idea?.idea?.text)
+const link = computed(() => `/?idea=${slug?.value}`)
 
 const isActive = computed(() => {
   if (props.index === 0) {
@@ -117,7 +117,7 @@ const handleClick = () => {
   .titles {
     width: 65%;
     flex: none;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s;
 
     @media screen and (min-width: 1024px) {
       width: 75%;
@@ -125,7 +125,7 @@ const handleClick = () => {
   }
 
   .inner {
-    transition: transform 0.2s;
+    transition: transform 0.3s;
 
     @media screen and (min-width: 1024px) {
       transform: translateX(-75%);

@@ -10,7 +10,7 @@
 
       <div
         v-if="module.caption"
-        class="rich-text mt-4 font-medium leading-none w-1/2"
+        class="rich-text mt-4 font-medium leading-[1.1] w-full lg:w-1/2"
         v-html="module.caption"
       ></div>
     </div>
@@ -160,17 +160,6 @@ const onSlideChange = (swiper) => {
         }
       )
     }
-
-    // get current slide
-    // const currentSlide = document.querySelector(`.swiper-slide-active`)
-
-    // if (currentSlide) {
-    //   const videoEl = currentSlide.querySelector('video')
-
-    //   if (videoEl) {
-    //     videoEl.currentTime = 0.01
-    //   }
-    // }
   })
 }
 

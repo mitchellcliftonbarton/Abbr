@@ -10,7 +10,9 @@
       />
     </figure>
 
-    <div class="carousel-wrapper block w-5/6 lg:w-1/4 aspect-[4/5.8] relative rounded-xl flex flex-col justify-between">
+    <div
+      class="carousel-wrapper block w-5/6 lg:w-1/4 max-w-[400px] aspect-[4/5.8] relative rounded-xl flex flex-col justify-between"
+    >
       <div class="flex justify-between items-center flex-none p-4 lg:p-6">
         <h2
           v-if="carouselTitle"
@@ -112,7 +114,7 @@ const props = defineProps({
 const carousel = ref(null)
 const currentIndex = ref(0)
 const timer = ref(null)
-const slideDuration = ref(3000)
+const slideDuration = ref(5000)
 const indicatorMinValue = ref(5)
 const indicatorMaxValue = ref(30)
 const indicatorWidth = ref(indicatorMinValue.value)
