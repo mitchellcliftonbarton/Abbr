@@ -159,8 +159,8 @@ const relatedProjects = computed(() => {
 // Metadata
 useMeta({
   title: projectTitle,
-  description: introText ? stripTags(introText) : null,
-  ogImage: mainImage?.mediaItemUrl ?? null,
+  description: introText ? stripTags(introText.value) : null,
+  ogImage: mainImage?.value?.mediaItemUrl ?? null,
 })
 </script>
 

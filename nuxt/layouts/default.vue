@@ -72,7 +72,7 @@ const defaultMeta = useState('defaultMeta', () => {
   return {
     title: 'Abbr. Projects',
     description: data?.value?.global?.globalData?.metaDescription ?? null,
-    ogImage: data?.value?.global?.globalData?.ogImage?.node?.mediaDetails?.sizes?.[0]?.sourceUrl ?? null,
+    ogImage: data?.value?.global?.globalData?.ogImage?.node?.mediaItemUrl ?? null,
     ogType: 'website',
   }
 })

@@ -17,6 +17,7 @@ export async function getGlobalData({ runTimeConfig }) {
                       sourceUrl
                     }
                   }
+                  mediaItemUrl
                 }
               }
               footerTextSub
