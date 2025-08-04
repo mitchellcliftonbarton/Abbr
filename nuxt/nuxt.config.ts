@@ -6,6 +6,12 @@ export default defineNuxtConfig({
   Defaults
   */
 
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

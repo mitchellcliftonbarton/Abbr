@@ -43,4 +43,9 @@ const getModuleType = (type) => {
       return GlobalFullWidthMedia
   }
 }
+
+// Metadata
+useMeta({
+  title: 'Home',
+})
 </script>

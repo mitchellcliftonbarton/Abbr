@@ -182,6 +182,7 @@ onBeforeUnmount(() => {
     z-index: 50;
     backdrop-filter: blur(15px);
     color: white;
+    min-width: 400px;
 
     * {
       color: white;

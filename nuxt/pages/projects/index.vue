@@ -90,6 +90,11 @@ watch(
     window.scrollTo(0, 0)
   }
 )
+
+// Metadata
+useMeta({
+  title: 'Projects',
+})
 </script>
 
 <style scoped lang="postcss">

@@ -93,6 +93,7 @@
 <script setup>
 import { getProjectDetailData } from '~/queries/projectDetail'
 import ProjectItem from '~/components/ProjectItem.vue'
+import { stripTags } from '~/lib/utils'
 
 // register components
 import ProjectMediaModule from '~/components/ProjectMediaModule.vue'
@@ -153,6 +154,13 @@ const mainVideo = computed(() => {
 
 const relatedProjects = computed(() => {
   return data.value?.project?.projectData?.relatedProjects?.nodes ?? data.value?.project?.projectData?.relatedProjects
+})
+
+// Metadata
+useMeta({
+  title: projectTitle,
+  description: introText ? stripTags(introText) : null,
+  ogImage: mainImage?.mediaItemUrl ?? null,
 })
 </script>
 

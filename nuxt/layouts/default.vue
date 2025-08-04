@@ -67,6 +67,16 @@ const allPosts = useState('allPosts', () => {
   return false
 })
 
+// set default meta data global state
+const defaultMeta = useState('defaultMeta', () => {
+  return {
+    title: 'Abbr. Projects',
+    description: data?.value?.global?.globalData?.metaDescription ?? null,
+    ogImage: data?.value?.global?.globalData?.ogImage?.node?.mediaDetails?.sizes?.[0]?.sourceUrl ?? null,
+    ogType: 'website',
+  }
+})
+
 const mobileMenuOpen = useState('mobileMenuOpen', () => false)
 
 // custom cursor global state
