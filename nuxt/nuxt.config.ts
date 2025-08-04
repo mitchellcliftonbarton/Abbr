@@ -20,8 +20,12 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', 'nuxt-gtag'],
   css: ['~/assets/css/main.css'],
+
+  gtag: {
+    id: 'G-H6XXJ8XF13',
+  },
 
   runtimeConfig: {
     public: {
