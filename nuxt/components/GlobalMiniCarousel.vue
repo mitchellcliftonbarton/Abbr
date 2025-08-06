@@ -13,7 +13,7 @@
     <div
       class="carousel-wrapper block w-5/6 lg:w-1/4 max-w-[400px] aspect-[4/5.8] relative rounded-xl flex flex-col justify-between"
     >
-      <div class="flex justify-between items-center flex-none p-4 lg:p-6">
+      <div class="flex justify-between items-center flex-none p-6">
         <h2
           v-if="carouselTitle"
           class="text-sm uppercase text-grey-2 tracking-default leading-none font-medium"
