@@ -1,20 +1,24 @@
 export async function getGlobalData({ runTimeConfig }) {
-  const response = await fetch(runTimeConfig.public.graphqlEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        {
-          global {
-            globalData {
-              metaDescription
-              ogImage {
-                node {
-                  mediaDetails {
-                    sizes(include: [CUSTOM_XXL]) {
-                      sourceUrl
+  try {
+    console.log('GraphQL Endpoint:', runTimeConfig.public.graphqlEndpoint)
+    
+    const response = await fetch(runTimeConfig.public.graphqlEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
+          {
+            global {
+              globalData {
+                metaDescription
+                ogImage {
+                  node {
+                    mediaDetails {
+                      sizes(include: [CUSTOM_XXL]) {
+                        sourceUrl
+                      }
                     }
                   }
                   mediaItemUrl
@@ -64,10 +68,19 @@ export async function getGlobalData({ runTimeConfig }) {
           }
         }
       `,
-    }),
-  })
+    })
 
-  const res = await response.json()
+    if (!response.ok) {
+      console.error('GraphQL Response Error:', response.status, response.statusText)
+      const errorText = await response.text()
+      console.error('Error Response:', errorText)
+      throw new Error(`GraphQL request failed: ${response.status} ${response.statusText}`)
+    }
 
-  return res.data
+    const res = await response.json()
+    return res.data
+  } catch (error) {
+    console.error('GraphQL Error:', error)
+    throw error
+  }
 }

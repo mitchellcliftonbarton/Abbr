@@ -40,7 +40,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      graphqlEndpoint: process.env.GRAPHQL_ENDPOINT_DEV,
+      graphqlEndpoint: process.env.GRAPHQL_ENDPOINT_PROD || process.env.GRAPHQL_ENDPOINT_DEV,
       allowedHostnames: ['localhost:3000', '127.0.0.1', 'abbr.warm-rice.dev', 'abbr-projects.local'],
     },
   },
