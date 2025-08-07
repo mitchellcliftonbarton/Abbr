@@ -1,45 +1,47 @@
 export default defineNuxtPlugin(async () => {
   const config = useRuntimeConfig()
 
+  console.log(config)
+
   // Fetch default meta data from GraphQL
-  const response = await fetch(config.public.graphqlEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        {
-          global {
-            globalData {
-              metaDescription
-              ogImage {
-                node {
-                  mediaDetails {
-                    filePath
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
-    }),
-  })
+  // const response = await fetch(config.public.graphqlEndpoint, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     query: `
+  //       {
+  //         global {
+  //           globalData {
+  //             metaDescription
+  //             ogImage {
+  //               node {
+  //                 mediaDetails {
+  //                   filePath
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `,
+  //   }),
+  // })
 
-  const { data } = await response.json()
+  // const { data } = await response.json()
 
-  const { metaDescription, ogImage } = data.global?.globalData
-  const title = 'Abbr. Projects'
+  // const { metaDescription, ogImage } = data.global?.globalData
+  // const title = 'Abbr. Projects'
 
-  // Set default meta tags
-  useSeoMeta({
-    title: title,
-    titleTemplate: '%s | Abbr. Projects',
-    description: metaDescription,
-    ogTitle: title,
-    ogDescription: metaDescription,
-    ogImage: ogImage?.node?.mediaDetails?.filePath,
-    ogType: 'website',
-  })
+  // // Set default meta tags
+  // useSeoMeta({
+  //   title: title,
+  //   titleTemplate: '%s | Abbr. Projects',
+  //   description: metaDescription,
+  //   ogTitle: title,
+  //   ogDescription: metaDescription,
+  //   ogImage: ogImage?.node?.mediaDetails?.filePath,
+  //   ogType: 'website',
+  // })
 })

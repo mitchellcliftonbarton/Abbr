@@ -14,6 +14,5 @@ console.log(props.error)
     <p>{{ error?.message }}</p>
     <p>{{ error?.statusMessage }}</p>
     <p>{{ error?.data }}</p>
-    <button @click="handleError">Clear errors</button>
   </div>
 </template>
