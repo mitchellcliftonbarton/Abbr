@@ -1,6 +1,6 @@
 <template>
   <div class="page-modules">
-    <p>Home</p>
+    <p>Home 2</p>
     <!-- <component
       :is="getModuleType(module.fieldGroupName)"
       v-for="(module, index) in modules"
