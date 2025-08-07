@@ -3,6 +3,8 @@
 </template>
 
 <script setup>
+const runTimeConfig = useRuntimeConfig()
+
 onMounted(async () => {
   // run test to see if the graphql endpoint is working
   setTimeout(async () => {
