@@ -16,6 +16,14 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
+  nitro: {
+    preset: "cloudflare_module",
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true
+    }
+  }
+
   plugins: ['~/plugins/server/meta-defaults.js'],
 
   compatibilityDate: '2025-05-15',
