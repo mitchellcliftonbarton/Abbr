@@ -106,7 +106,7 @@ const runTimeConfig = useRuntimeConfig()
 const route = useRoute()
 
 // get project detail data
-const { data } = await useAsyncData('projectDetailData', () =>
+const { data } = await useAsyncData(`projectDetailData-${route.params.slug}`, () =>
   getProjectDetailData({ runTimeConfig, slug: route.params.slug })
 )
 
