@@ -32,14 +32,17 @@ export default defineNuxtPlugin(async () => {
   const { metaDescription, ogImage } = data.global?.globalData
   const title = 'Abbr. Projects'
 
+  console.log('meta-defaults data', metaDescription)
+  console.log('meta-defaults ogImage', ogImage?.node?.mediaDetails?.filePath)
+
   // Set default meta tags
-  useSeoMeta({
-    title: title,
-    titleTemplate: '%s | Abbr. Projects',
-    description: metaDescription,
-    ogTitle: title,
-    ogDescription: metaDescription,
-    ogImage: ogImage?.node?.mediaDetails?.filePath,
-    ogType: 'website',
-  })
+  // useSeoMeta({
+  //   title: title,
+  //   titleTemplate: '%s | Abbr. Projects',
+  //   description: metaDescription,
+  //   ogTitle: title,
+  //   ogDescription: metaDescription,
+  //   ogImage: ogImage?.node?.mediaDetails?.filePath,
+  //   ogType: 'website',
+  // })
 })
