@@ -1,7 +1,7 @@
 export default defineNuxtPlugin(async () => {
   const config = useRuntimeConfig()
 
-  console.log(config)
+  console.log('meta-defaults config', config.public.graphqlEndpoint)
 
   // Fetch default meta data from GraphQL
   const response = await fetch(config.public.graphqlEndpoint, {
@@ -9,6 +9,7 @@ export default defineNuxtPlugin(async () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    redirect: 'follow',
     body: JSON.stringify({
       query: `
         {
