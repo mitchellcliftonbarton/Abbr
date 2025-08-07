@@ -15,13 +15,6 @@ export default defineNuxtPlugin(async () => {
           global {
             globalData {
               metaDescription
-              ogImage {
-                node {
-                  mediaDetails {
-                    filePath
-                  }
-                }
-              }
             }
           }
         }
