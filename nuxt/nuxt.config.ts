@@ -21,6 +21,9 @@ export default defineNuxtConfig({
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
+      wrangler: {
+        name: 'abbr-nuxt',
+      },
     },
   },
 
