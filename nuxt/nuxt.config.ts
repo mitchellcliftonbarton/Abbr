@@ -17,12 +17,12 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: "cloudflare_module",
+    preset: 'cloudflare_module',
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
-    }
-  }
+      nodeCompat: true,
+    },
+  },
 
   plugins: ['~/plugins/server/meta-defaults.js'],
 
