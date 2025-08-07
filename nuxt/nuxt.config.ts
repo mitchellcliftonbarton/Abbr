@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     },
   },
 
-  plugins: ['~/plugins/server/meta-defaults.js'],
+  // plugins: ['~/plugins/server/meta-defaults.js'],
 
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
