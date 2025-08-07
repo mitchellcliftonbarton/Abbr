@@ -15,6 +15,13 @@ export default defineNuxtPlugin(async () => {
           global {
             globalData {
               metaDescription
+              ogImage {
+                node {
+                  mediaDetails {
+                    filePath
+                  }
+                }
+              }
             }
           }
         }
@@ -22,11 +29,11 @@ export default defineNuxtPlugin(async () => {
     }),
   })
 
-  console.log(response)
+  console.log('meta-defaults response', response)
 
   const { data } = await response.json()
 
-  console.log(data)
+  console.log('meta-defaults data', data)
 
   const { metaDescription, ogImage } = data?.global?.globalData
   const title = 'Abbr. Projects'

@@ -21,6 +21,13 @@ onMounted(async () => {
           global {
             globalData {
               metaDescription
+              ogImage {
+                node {
+                  mediaDetails {
+                    filePath
+                  }
+                }
+              }
             }
           }
         }
@@ -30,7 +37,7 @@ onMounted(async () => {
 
     const data = await response.json()
 
-    console.log(data)
+    console.log('layout data', data)
   }, 1000)
 })
 </script>
