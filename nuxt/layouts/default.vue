@@ -8,6 +8,8 @@
 const runTimeConfig = useRuntimeConfig()
 
 onMounted(async () => {
+  console.log('mounted')
+
   // run test to see if the graphql endpoint is working
   setTimeout(async () => {
     const response = await fetch(runTimeConfig.public.graphqlEndpoint, {
