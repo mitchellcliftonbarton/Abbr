@@ -27,7 +27,10 @@ onMounted(async () => {
       `,
       }),
     })
-    console.log(response)
+
+    const data = await response.json()
+
+    console.log(data)
   }, 1000)
 })
 </script>
