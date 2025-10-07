@@ -19,14 +19,23 @@
         </figure>
       </div>
 
-      <div class="titles text-sm leading-[1.2] py-2 px-3">
-        <p class="text-black line-clamp-2">{{ projectTitle }}</p>
+      <div class="titles text-sm leading-[1.2] py-2 px-3 flex flex-col justify-between items-start">
+        <div>
+          <p class="text-black line-clamp-2">{{ projectTitle }}</p>
+
+          <p
+            v-if="projectSectors"
+            class="text-grey-3"
+          >
+            {{ projectSectorsString }}
+          </p>
+        </div>
 
         <p
-          v-if="projectSectors"
-          class="text-grey-3"
+          v-if="archiveCredit"
+          class="font-secondary text-xs uppercase text-grey-2"
         >
-          {{ projectSectorsString }}
+          {{ archiveCredit }}
         </p>
       </div>
     </div>
@@ -62,6 +71,10 @@ const mainImage = computed(() => {
 
 const archiveLink = computed(() => {
   return props.project.projectData?.archiveLink?.url
+})
+
+const archiveCredit = computed(() => {
+  return props.project.projectData?.archiveCredit
 })
 </script>
 

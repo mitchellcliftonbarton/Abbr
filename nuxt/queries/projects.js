@@ -79,6 +79,7 @@ export async function getProjectsData({ runTimeConfig }) {
                 archiveLink {
                   url
                 }
+                archiveCredit
               }
               projectServiceCategories {
                 nodes {
