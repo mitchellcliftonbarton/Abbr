@@ -63,14 +63,14 @@
           <div class="mt-6 flex flex-col items-start gap-1">
             <div
               v-if="item.author"
-              class="author text-sm tracking-default leading-none font-medium"
+              class="author text-sm tracking-default leading-none font-medium py-[.1em]"
             >
               {{ item.author }}
             </div>
 
             <div
               v-if="item.source"
-              class="source text-sm tracking-default leading-none font-medium opacity-50"
+              class="source text-sm tracking-default leading-none font-medium opacity-50 py-[.1em]"
             >
               {{ item.source }}
             </div>
