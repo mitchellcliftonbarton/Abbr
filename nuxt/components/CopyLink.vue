@@ -1,40 +1,53 @@
 <template>
   <button
     @click.prevent="handleCopy"
-    class="circle-link"
-    :class="{ 'pointer-events-none': buttonText }"
+    :class="{ 'pointer-events-none': copying, 'circle-link': type === 'circle', 'play-link font-secondary uppercase text-xs': type === 'play', 'circle-link circle-link-white': type === 'circle-white' }"
   >
+    <Play v-if="type === 'play'" />
+
     <div
-      v-if="!buttonText"
+      v-if="!copying"
       class="text-content"
     >
-      <div>Share</div>
-      <div>Share</div>
+      <div>{{ buttonText }}</div>
+      <div>{{ buttonText }}</div>
     </div>
 
-    <p v-else>{{ buttonText }}</p>
+    <p v-else class="text-content">Link Copied</p>
   </button>
 </template>
 
 <script setup>
+import Play from '~/components/Play.vue'
+
 // define props
 const props = defineProps({
-  text: {
+  textToCopy: {
     type: String,
     required: true,
+  },
+  text: {
+    type: String,
+    required: false,
+  },
+  type: {
+    type: String,
+    required: false,
+    default: 'circle',
   },
 })
 
 // refs
-const buttonText = ref(null)
+const copying = ref(false)
+const buttonText = computed(() => props.text || 'Share')
 
 // handle copy
 const handleCopy = () => {
-  navigator.clipboard.writeText(props.text)
-  buttonText.value = 'Link Copied'
+  copying.value = true
+  navigator.clipboard.writeText(props.textToCopy)
 
   setTimeout(() => {
-    buttonText.value = null
+    copying.value = false
   }, 2000)
 }
 </script>

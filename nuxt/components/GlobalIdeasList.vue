@@ -12,7 +12,7 @@
         <div class="flex justify-between items-center border-b border-grey-2 pb-4">
           <h2 class="text-lg text-grey-2 tracking-default leading-none font-medium">Abbr. Ideas</h2>
 
-          <CopyLink :text="linkToCopy" />
+          <CopyLink :text="Share" :text-to-copy="linkToCopy" type="circle" />
         </div>
       </div>
 

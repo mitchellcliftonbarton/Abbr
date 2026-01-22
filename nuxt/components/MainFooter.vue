@@ -31,18 +31,26 @@
           v-if="footerLinks"
           class="links flex gap-8 justify-between lg:justify-start w-full lg:w-auto"
         >
-          <DynamicLink
-            v-for="link in footerLinks"
-            :key="link.link.url"
-            :href="link.link.url"
-            class="play-link text-white text-xs font-secondary uppercase"
-          >
-            <Play />
-            <div class="text-content">
-              <div>{{ link.link.title }}</div>
-              <div>{{ link.link.title }}</div>
-            </div>
-          </DynamicLink>
+          <div v-for="link in footerLinks" :key="link.link.url">
+            <CopyLink
+              v-if="link.link.url.includes('mailto:')"
+              :text="link.link.title"
+              :text-to-copy="link.link.url"
+              type="play"
+            />
+
+            <DynamicLink
+              v-else
+              :href="link.link.url"
+              class="play-link text-white text-xs font-secondary uppercase"
+            >
+              <Play />
+              <div class="text-content">
+                <div>{{ link.link.title }}</div>
+                <div>{{ link.link.title }}</div>
+              </div>
+            </DynamicLink>
+          </div>
         </div>
       </div>
     </div>
@@ -53,6 +61,7 @@
 import Logo from '~/components/Logo.vue'
 import Play from '~/components/Play.vue'
 import DynamicLink from '~/components/DynamicLink.vue'
+import CopyLink from '~/components/CopyLink.vue'
 import { nl2br } from '~/lib/utils'
 
 const footerData = useState('footerData')

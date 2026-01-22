@@ -79,18 +79,14 @@
       </swiper>
 
       <div
-        v-if="carouselLink"
+        v-if="carouselLink && carouselLink.url.includes('mailto:')"
         class="p-6 flex-none"
       >
-        <DynamicLink
-          :href="carouselLink.url"
-          class="circle-link circle-link-white"
-        >
-          <div class="text-content">
-            <div>{{ carouselLink.title }}</div>
-            <div>{{ carouselLink.title }}</div>
-          </div>
-        </DynamicLink>
+        <CopyLink
+          :text="carouselLink.title"
+          :text-to-copy="carouselLink.url"
+          type="circle-white"
+        />
       </div>
     </div>
   </section>
@@ -102,6 +98,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import { gsap } from 'gsap/all'
+import CopyLink from '~/components/CopyLink.vue'
 
 // define props
 const props = defineProps({

@@ -14,8 +14,15 @@
         {{ headline }}
       </h2>
 
+      <CopyLink 
+        v-if="link && link.url.includes('mailto:')"
+        :text="link.title" 
+        :text-to-copy="link.url"
+        type="play"
+      />
+
       <DynamicLink
-        v-if="link"
+        v-else="link"
         :href="link.url"
         class="play-link font-secondary uppercase text-xs"
       >
@@ -54,6 +61,7 @@
 <script setup>
 import Play from '~/components/Play.vue'
 import DynamicLink from '~/components/DynamicLink.vue'
+import CopyLink from '~/components/CopyLink.vue'
 import { gsap, ScrollTrigger } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger)
 
