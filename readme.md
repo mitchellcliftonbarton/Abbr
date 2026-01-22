@@ -1,4 +1,4 @@
-# Abbr
+# Abbr Projects
 
 Wordpress theme: `/abbr-wp-theme`
 Nuxt app: `/nuxt

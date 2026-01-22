@@ -10,6 +10,30 @@ require_once('lib/setup-acf.php');
 
 /*
 ----------------
+CORS Headers for WP GraphQL
+----------------
+*/
+
+add_action('init', function () {
+	if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+		header('Access-Control-Allow-Headers: Content-Type, Authorization');
+		header('Access-Control-Max-Age: 3600');
+		status_header(200);
+		exit;
+	}
+}, 0);
+
+add_action('send_headers', function () {
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+	header('Access-Control-Allow-Headers: Content-Type, Authorization');
+});
+
+
+/*
+----------------
 SETUP THEME
 ----------------
 */
