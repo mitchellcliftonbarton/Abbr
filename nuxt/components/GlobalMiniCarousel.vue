@@ -79,10 +79,10 @@
       </swiper>
 
       <div
-        v-if="carouselLink && carouselLink.url.includes('mailto:')"
         class="p-6 flex-none"
       >
         <CopyLink
+          v-if="carouselLink && carouselLink.url.includes('mailto:')"
           :text="carouselLink.title"
           :text-to-copy="carouselLink.url"
           type="circle-white"
