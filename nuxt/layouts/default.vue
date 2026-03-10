@@ -32,6 +32,8 @@ const runTimeConfig = useRuntimeConfig()
 // get event bus
 const { $listen } = useNuxtApp()
 
+const route = useRoute()
+
 // fetch global data
 const { data, error } = await useAsyncData('global', () => getGlobalData({ runTimeConfig }))
 
@@ -106,6 +108,14 @@ onMounted(() => {
     })
   }
 })
+
+// watch route change
+watch(
+  () => route.path,
+  () => {
+    showCustomCursor.value = false
+  },
+)
 </script>
 
 <style scoped lang="postcss">

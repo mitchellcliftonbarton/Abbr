@@ -119,12 +119,6 @@ const handleMouseLeave = () => {
 }
 
 onMounted(() => {
-  // $listen('update-scroll-triggers', () => {
-  //   if (scrollTrigger.value) {
-  //     scrollTrigger.value.refresh()
-  //   }
-  // })
-
   if (isLargeQuery.value) {
     // define scroll trigger
     const globalFeaturedProjects = document.querySelector('.global-featured-projects')
@@ -175,7 +169,7 @@ onMounted(() => {
             duration: 0.5,
             ease: 'linear',
           },
-          '-=0.5'
+          '-=0.5',
         )
 
         tl.to(item, {
