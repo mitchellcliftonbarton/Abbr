@@ -16,6 +16,7 @@
     </div>
 
     <div
+      ref="containerRef"
       class="carousel-container col-span-12 lg:col-span-6 order-first lg:order-last"
       :class="aspectRatio.class"
     >
@@ -25,7 +26,7 @@
       >
         <div
           v-if="carouselMedia.length > 1"
-          class="flex gap-3 absolute top-4 right-4 z-20"
+          class="timer flex gap-3 absolute top-4 right-4 z-20"
         >
           <button
             v-for="(item, index) in carouselMedia"
@@ -93,6 +94,7 @@ const props = defineProps({
 })
 
 const carousel = ref(null)
+const containerRef = ref(null)
 const currentIndex = ref(0)
 const timer = ref(null)
 const slideDuration = ref(7000)
@@ -131,7 +133,8 @@ const onSlideChange = (swiper) => {
   currentIndex.value = swiper.realIndex
 
   // set all indicators to min value
-  const indicators = Array.from(document.querySelectorAll('.carousel-button .indicator'))
+  const root = containerRef.value
+  const indicators = Array.from(root.querySelectorAll('.carousel-button .indicator'))
   indicators.forEach((indicator) => {
     gsap.set(indicator, {
       width: indicatorMinValue.value,
@@ -140,7 +143,7 @@ const onSlideChange = (swiper) => {
 
   nextTick(() => {
     // get current indicator
-    const currentIndicator = document.querySelector(`.carousel-button.active .indicator`)
+    const currentIndicator = root.querySelector(`.carousel-button.active .indicator`)
 
     if (currentIndicator) {
       // Kill any existing animation
@@ -157,7 +160,7 @@ const onSlideChange = (swiper) => {
           width: indicatorMaxValue.value,
           duration: slideDuration.value / 1000,
           ease: 'linear',
-        }
+        },
       )
     }
   })
