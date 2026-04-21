@@ -136,9 +136,7 @@ const onSlideChange = (swiper) => {
   const root = containerRef.value
   const indicators = Array.from(root.querySelectorAll('.carousel-button .indicator'))
   indicators.forEach((indicator) => {
-    gsap.set(indicator, {
-      width: indicatorMinValue.value,
-    })
+    gsap.set(indicator, { scaleX: 0 })
   })
 
   nextTick(() => {
@@ -153,11 +151,9 @@ const onSlideChange = (swiper) => {
 
       currentAnimation.value = gsap.fromTo(
         currentIndicator,
+        { scaleX: indicatorMinValue.value / indicatorMaxValue.value },
         {
-          width: indicatorMinValue.value,
-        },
-        {
-          width: indicatorMaxValue.value,
+          scaleX: 1,
           duration: slideDuration.value / 1000,
           ease: 'linear',
         },
@@ -205,15 +201,14 @@ onBeforeUnmount(() => {
       position: absolute;
       top: 0;
       left: 0;
-      /* width: 15px; */
+      width: 100%;
       height: 100%;
       background-color: white;
       opacity: 0;
-      transition:
-        opacity 0.2s,
-        transform 0.2s;
+      transition: opacity 0.2s;
       border-radius: 99999px;
-      transform: translateX(-100%);
+      transform: scaleX(0);
+      transform-origin: left center;
     }
 
     &.active {
@@ -221,7 +216,6 @@ onBeforeUnmount(() => {
 
       .indicator {
         opacity: 1;
-        transform: translateX(0);
       }
     }
   }
