@@ -22,7 +22,7 @@
         <div
           v-if="projectItem.text"
           v-html="projectItem.text"
-          class="text-lg text-black font-medium leading-none tracking-default"
+          class="text text-lg text-black font-medium leading-none tracking-default"
         />
       </div>
     </div>
@@ -45,3 +45,13 @@ const props = defineProps({
   },
 })
 </script>
+
+<style scoped lang="postcss">
+.text {
+  font-weight: 400 !important;
+
+  * {
+    font-weight: 400 !important;
+  }
+}
+</style>
