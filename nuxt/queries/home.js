@@ -156,7 +156,7 @@ export async function getPageData({ runTimeConfig, url }) {
                 ... on HomeModulesLogoTickerLayout {
                   fieldGroupName
                   title
-                  logos {
+                  logos(first: 100) {
                     nodes {
                       altText
                       mediaItemUrl
