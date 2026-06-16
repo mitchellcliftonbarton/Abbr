@@ -14,6 +14,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   }
 
+  const initFade = (el) => {
+    // skip if the component already manages its own opacity (e.g. GlobalFullWidthMedia)
+    if (el.classList.contains('opacity-0') || el.classList.contains('opacity-100')) return
+    el.style.opacity = '0'
+    el.style.transition = 'opacity 1s'
+    el.addEventListener('canplay', () => { el.style.opacity = '1' }, { once: true })
+  }
+
   nuxtApp.vueApp.directive('video-in-view', {
     mounted(el) {
       // ensure muted/inline so programmatic play() is allowed to autoplay
@@ -21,6 +29,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       el.setAttribute('muted', '')
       el.playsInline = true
       el.preload = 'none'
+
+      // fade in when the video is ready to play
+      initFade(el)
 
       // no IntersectionObserver support → just play
       if (typeof IntersectionObserver === 'undefined') {
