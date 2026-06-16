@@ -8,7 +8,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        // warm up the connection to the WP media/GraphQL host
+        { rel: 'preconnect', href: 'https://admin.abbrprojects.com', crossorigin: '' },
+        { rel: 'dns-prefetch', href: 'https://admin.abbrprojects.com' },
+      ],
     },
   },
 

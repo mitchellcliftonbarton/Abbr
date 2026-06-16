@@ -5,6 +5,9 @@
     :alt="altValue"
     :srcset="srcset"
     :sizes="sizes"
+    :loading="loadingValue"
+    decoding="async"
+    :fetchpriority="priority ? 'high' : undefined"
     @load="handleLoad"
     :class="{ loaded }"
   />
@@ -13,6 +16,9 @@
     ref="imgRef"
     :src="src"
     :alt="altValue"
+    :loading="loadingValue"
+    decoding="async"
+    :fetchpriority="priority ? 'high' : undefined"
     @load="handleLoad"
     :class="{ loaded }"
   />
@@ -24,10 +30,20 @@ const props = defineProps({
   imageData: Object,
   alt: String,
   src: String,
+  // above-the-fold images should load eagerly to protect LCP
+  priority: {
+    type: Boolean,
+    default: false,
+  },
+  // optional override for the native loading attribute
+  loading: String,
 })
 
 // get alt value
 const altValue = computed(() => props.alt || props.imageData?.altText)
+
+// native loading attribute: eager for priority/hero images, lazy otherwise
+const loadingValue = computed(() => (props.priority ? 'eager' : props.loading || 'lazy'))
 
 // get srcset value
 const srcset = computed(() => {

@@ -145,6 +145,16 @@ export async function getPageData({ runTimeConfig, url }) {
                     }
                   }
                 }
+                ... on HomeModulesLogoTickerLayout {
+                  fieldGroupName
+                  title
+                  logos {
+                    nodes {
+                      altText
+                      mediaItemUrl
+                    }
+                  }
+                }
                 ... on HomeModulesFullWidthMediaLayout {
                   type
                   fieldGroupName

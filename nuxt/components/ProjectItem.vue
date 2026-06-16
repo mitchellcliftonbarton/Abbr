@@ -6,13 +6,13 @@
     <figure class="aspect-[4/5] col-span-1 rounded-2xl overflow-hidden bg-grey-1">
       <video
         v-if="mainVideo"
+        v-video-in-view
         :src="mainVideo"
         class="w-full h-full object-cover"
-        autoplay
         muted
         loop
         playsinline
-        preload="auto"
+        preload="none"
       />
 
       <DefImage

@@ -950,6 +950,72 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_6a317d34f1ecd": {
+                    "key": "layout_6a317d34f1ecd",
+                    "name": "logo_ticker",
+                    "label": "Logo Ticker",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6a317d39f1ed4",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "title",
+                            "graphql_non_null": 0
+                        },
+                        {
+                            "key": "field_6a317d3ef1ed5",
+                            "label": "Logos",
+                            "name": "logos",
+                            "aria-label": "",
+                            "type": "gallery",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min": "",
+                            "max": "",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ".svg",
+                            "insert": "append",
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "logos"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -979,9 +1045,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
     "show_in_graphql": 1,
     "graphql_field_name": "home",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1749825785
+    "modified": 1781628266
 }

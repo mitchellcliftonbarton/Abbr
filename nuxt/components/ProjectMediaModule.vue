@@ -26,13 +26,13 @@
       >
         <video
           v-if="isVideo"
+          v-video-in-view
           :src="module.video.node.mediaItemUrl"
           class="w-full h-full object-cover"
-          autoplay
           muted
           loop
           playsinline
-          preload
+          preload="none"
         />
 
         <DefImage

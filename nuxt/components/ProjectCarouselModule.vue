@@ -64,13 +64,13 @@
 
             <video
               v-else-if="item.mimeType.includes('video')"
+              v-video-in-view
               :src="item.mediaItemUrl"
               class="w-full h-full object-cover"
-              autoplay
               muted
               loop
               playsinline
-              preload="auto"
+              preload="none"
             />
           </swiper-slide>
         </swiper>

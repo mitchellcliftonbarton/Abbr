@@ -48,7 +48,24 @@ const currentService = computed(() => {
 })
 
 // get projects data
-const { data } = await useAsyncData('projectsData', () => getProjectsData({ runTimeConfig }))
+const nuxtApp = useNuxtApp()
+const CACHE_TTL = 1000 * 60 * 30 // 30 min
+
+const { data } = await useAsyncData(
+  'projectsData',
+  async () => {
+    const result = await getProjectsData({ runTimeConfig })
+    return result ? { ...result, _fetchedAt: Date.now() } : result
+  },
+  {
+    getCachedData(key) {
+      const cached = nuxtApp.payload.data[key] ?? nuxtApp.static?.data?.[key]
+      if (!cached?._fetchedAt) return undefined
+      if (Date.now() - cached._fetchedAt > CACHE_TTL) return undefined
+      return cached
+    },
+  },
+)
 
 // computed
 const allFeaturedProjects = computed(() => {

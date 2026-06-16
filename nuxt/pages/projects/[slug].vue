@@ -45,18 +45,19 @@
         <figure class="aspect-[4/5] w-full lg:w-[70%] mx-auto rounded-2xl overflow-hidden bg-grey-1">
           <video
             v-if="mainVideo"
+            v-video-in-view
             :src="mainVideo"
             class="w-full h-full object-cover"
-            autoplay
             muted
             loop
             playsinline
-            preload="auto"
+            preload="none"
           />
 
           <DefImage
             v-else-if="mainImage"
             :image-data="mainImage"
+            :priority="true"
             class="w-full h-full object-cover"
           />
         </figure>
@@ -106,8 +107,23 @@ const runTimeConfig = useRuntimeConfig()
 const route = useRoute()
 
 // get project detail data
-const { data } = await useAsyncData(`projectDetailData-${route.params.slug}`, () =>
-  getProjectDetailData({ runTimeConfig, slug: route.params.slug })
+const nuxtApp = useNuxtApp()
+const CACHE_TTL = 1000 * 60 * 30 // 30 min
+
+const { data } = await useAsyncData(
+  `projectDetailData-${route.params.slug}`,
+  async () => {
+    const result = await getProjectDetailData({ runTimeConfig, slug: route.params.slug })
+    return result ? { ...result, _fetchedAt: Date.now() } : result
+  },
+  {
+    getCachedData(key) {
+      const cached = nuxtApp.payload.data[key] ?? nuxtApp.static?.data?.[key]
+      if (!cached?._fetchedAt) return undefined
+      if (Date.now() - cached._fetchedAt > CACHE_TTL) return undefined
+      return cached
+    },
+  },
 )
 
 const getModuleType = (type) => {

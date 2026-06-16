@@ -10,7 +10,8 @@
       >
         <DefImage
           :image-data="image"
-          class="object-cover w-full h-full object-center lazyload"
+          :priority="priority"
+          class="object-cover w-full h-full object-center"
         />
       </figure>
 
@@ -20,7 +21,7 @@
       >
         <DefImage
           :image-data="imageMobile"
-          class="object-cover w-full h-full object-center lazyload"
+          class="object-cover w-full h-full object-center"
         />
       </figure>
     </template>
@@ -30,14 +31,15 @@
       class="fill-parent"
     >
       <video
+        v-if="!useMobileVideo"
+        v-video-in-view
         :src="videoMp4.mediaItemUrl"
-        autoplay
         muted
         loop
         playsinline
+        preload="none"
         class="object-cover w-full h-full object-center transition-opacity duration-1000"
         :class="{
-          'hidden lg:block': videoMp4Mobile,
           'opacity-0': !desktopVideoLoaded,
           'opacity-100': desktopVideoLoaded,
         }"
@@ -47,13 +49,14 @@
       />
 
       <video
-        v-if="videoMp4Mobile"
+        v-else
+        v-video-in-view
         :src="videoMp4Mobile.mediaItemUrl"
-        autoplay
         muted
         loop
         playsinline
-        class="object-cover w-full h-full object-center transition-opacity duration-1000 block lg:hidden"
+        preload="none"
+        class="object-cover w-full h-full object-center transition-opacity duration-1000"
         :class="{
           'opacity-0': !mobileVideoLoaded,
           'opacity-100': mobileVideoLoaded,
@@ -75,6 +78,11 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  // above-the-fold (first module) loads its image eagerly
+  priority: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 // define data
@@ -87,6 +95,16 @@ const videoMp4Mobile = computed(() => props.module?.videoMp4Mobile?.node)
 // video loading states
 const desktopVideoLoaded = ref(false)
 const mobileVideoLoaded = ref(false)
+
+// viewport tracking so only one video is ever mounted/downloaded.
+// defaults to desktop on the server to avoid a hydration flash.
+const isMobile = ref(false)
+const useMobileVideo = computed(() => isMobile.value && !!videoMp4Mobile.value)
+
+let mql = null
+const updateIsMobile = (e) => {
+  isMobile.value = e.matches
+}
 
 // qualifiers
 const hasImage = computed(() => type.value === 'image' && image.value)
@@ -104,13 +122,21 @@ watch([videoMp4, videoMp4Mobile], () => {
   }, 500)
 })
 
-// Ensure fade-in on mount
+// Ensure fade-in on mount + track viewport for single-video rendering
 onMounted(() => {
+  mql = window.matchMedia('(max-width: 1023px)')
+  isMobile.value = mql.matches
+  mql.addEventListener('change', updateIsMobile)
+
   if (hasVideo.value) {
     setTimeout(() => {
       if (videoMp4.value) desktopVideoLoaded.value = true
       if (videoMp4Mobile.value) mobileVideoLoaded.value = true
     }, 100)
   }
+})
+
+onBeforeUnmount(() => {
+  if (mql) mql.removeEventListener('change', updateIsMobile)
 })
 </script>
