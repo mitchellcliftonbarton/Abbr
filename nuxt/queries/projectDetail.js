@@ -21,6 +21,8 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
                   mediaDetails {
                     width
                     height
+                    width
+                    height
                     sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                       sourceUrl
                       width
@@ -48,6 +50,8 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
                       altText
                       mediaItemUrl
                       mediaDetails {
+                        width
+                        height
                         width
                         height
                         sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
@@ -80,6 +84,8 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
                       mediaDetails {
                         width
                         height
+                        width
+                        height
                         sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                           sourceUrl
                           width
@@ -103,6 +109,8 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
                           altText
                           mediaItemUrl
                           mediaDetails {
+                            width
+                            height
                             sizes(include: [CUSTOM_LG, CUSTOM_MD]) {
                               sourceUrl
                               width
@@ -159,6 +167,8 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
                           altText
                           mediaItemUrl
                           mediaDetails {
+                            width
+                            height
                             sizes(include: [CUSTOM_LG, CUSTOM_MD]) {
                               sourceUrl
                               width

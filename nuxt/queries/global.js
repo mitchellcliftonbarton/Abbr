@@ -13,6 +13,8 @@ export async function getGlobalData({ runTimeConfig }) {
               ogImage {
                 node {
                   mediaDetails {
+                    width
+                    height
                     sizes(include: [CUSTOM_XXL]) {
                       sourceUrl
                     }
@@ -51,6 +53,8 @@ export async function getGlobalData({ runTimeConfig }) {
                     altText
                     mediaItemUrl
                     mediaDetails {
+                      width
+                      height
                       sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                         sourceUrl
                         width

@@ -22,6 +22,8 @@ export async function getProjectsData({ runTimeConfig }) {
                           altText
                           mediaItemUrl
                           mediaDetails {
+                            width
+                            height
                             sizes(include: [CUSTOM_LG, CUSTOM_MD]) {
                               sourceUrl
                               width
@@ -68,6 +70,8 @@ export async function getProjectsData({ runTimeConfig }) {
                     altText
                     mediaItemUrl
                     mediaDetails {
+                      width
+                      height
                       sizes(include: [CUSTOM_LG, CUSTOM_MD]) {
                         sourceUrl
                         width

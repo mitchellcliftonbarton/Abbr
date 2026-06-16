@@ -28,6 +28,8 @@ export async function getPageData({ runTimeConfig, url }) {
                               altText
                               mediaItemUrl
                               mediaDetails {
+                                width
+                                height
                                 sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                                   sourceUrl
                                   width
@@ -61,6 +63,8 @@ export async function getPageData({ runTimeConfig, url }) {
                       altText
                       mediaItemUrl
                       mediaDetails {
+                        width
+                        height
                         sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                           sourceUrl
                           width
@@ -102,6 +106,8 @@ export async function getPageData({ runTimeConfig, url }) {
                           altText
                           mediaItemUrl
                           mediaDetails {
+                            width
+                            height
                             sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                               sourceUrl
                               width
@@ -136,6 +142,8 @@ export async function getPageData({ runTimeConfig, url }) {
                       altText
                       mediaItemUrl
                       mediaDetails {
+                        width
+                        height
                         sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                           sourceUrl
                           width
@@ -173,6 +181,8 @@ export async function getPageData({ runTimeConfig, url }) {
                       altText
                       mediaItemUrl
                       mediaDetails {
+                        width
+                        height
                         sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                           sourceUrl
                           width
@@ -186,6 +196,8 @@ export async function getPageData({ runTimeConfig, url }) {
                       altText
                       mediaItemUrl
                       mediaDetails {
+                        width
+                        height
                         sizes(include: [CUSTOM_XXL, CUSTOM_XL, CUSTOM_LG, CUSTOM_MD]) {
                           sourceUrl
                           width

@@ -5,6 +5,9 @@
     :alt="altValue"
     :srcset="srcset"
     :sizes="sizes"
+    :width="dimensions?.width"
+    :height="dimensions?.height"
+    :style="aspectRatioStyle"
     :loading="loadingValue"
     decoding="async"
     :fetchpriority="priority ? 'high' : undefined"
@@ -16,6 +19,9 @@
     ref="imgRef"
     :src="src"
     :alt="altValue"
+    :width="dimensions?.width"
+    :height="dimensions?.height"
+    :style="aspectRatioStyle"
     :loading="loadingValue"
     decoding="async"
     :fetchpriority="priority ? 'high' : undefined"
@@ -44,6 +50,19 @@ const altValue = computed(() => props.alt || props.imageData?.altText)
 
 // native loading attribute: eager for priority/hero images, lazy otherwise
 const loadingValue = computed(() => (props.priority ? 'eager' : props.loading || 'lazy'))
+
+// intrinsic dimensions (reserve space to avoid layout shift)
+const dimensions = computed(() => {
+  const w = props.imageData?.mediaDetails?.width
+  const h = props.imageData?.mediaDetails?.height
+  if (!w || !h) return null
+  return { width: w, height: h }
+})
+
+// aspect-ratio hint; harmless where CSS already fixes both dimensions
+const aspectRatioStyle = computed(() =>
+  dimensions.value ? `aspect-ratio: ${dimensions.value.width} / ${dimensions.value.height}` : undefined,
+)
 
 // get srcset value
 const srcset = computed(() => {
