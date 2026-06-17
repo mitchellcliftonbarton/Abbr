@@ -32,10 +32,28 @@ export default defineNuxtConfig({
     id: 'G-H6XXJ8XF13',
   },
 
+  // Cache rendered HTML at the edge. swr = serve the last good render instantly
+  // and revalidate in the background; if revalidation fails (e.g. upstream 403/502),
+  // the previously cached page is still served instead of a 500.
+  routeRules: {
+    '/': { swr: 1800 }, // 30 min
+    '/projects': { swr: 1800 },
+    '/projects/**': { swr: 1800 },
+  },
+
   runtimeConfig: {
     public: {
       graphqlEndpoint: process.env.GRAPHQL_ENDPOINT_DEV,
-      allowedHostnames: ['localhost:3000', '127.0.0.1', 'abbr.warm-rice.dev', 'abbr-projects.local'],
+      // Hostnames treated as internal by DynamicLink.vue (SPA nav, same tab).
+      // Anything else is treated as external and opens in a new tab.
+      // Note: URL.hostname never includes a port, so use 'localhost' not 'localhost:3000'.
+      allowedHostnames: [
+        'abbrprojects.com',
+        'localhost',
+        '127.0.0.1',
+        'abbr.warm-rice.dev',
+        'abbr-projects.local',
+      ],
     },
   },
 })

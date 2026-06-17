@@ -1,11 +1,7 @@
+import { fetchGraphql } from '~/lib/graphql'
+
 export async function getPageData({ runTimeConfig, url }) {
-  const response = await fetch(runTimeConfig.public.graphqlEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
+  const query = `
         {
           page(id: "${url}", idType: URI) {
             title
@@ -211,11 +207,7 @@ export async function getPageData({ runTimeConfig, url }) {
             }
           }
         }
-      `,
-    }),
-  })
+      `
 
-  const res = await response.json()
-
-  return res.data
+  return fetchGraphql({ runTimeConfig, query })
 }

@@ -1,11 +1,7 @@
+import { fetchGraphql } from '~/lib/graphql'
+
 export async function getProjectsData({ runTimeConfig }) {
-  const response = await fetch(runTimeConfig.public.graphqlEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
+  const query = `
         {
           global {
             globalData {
@@ -100,11 +96,7 @@ export async function getProjectsData({ runTimeConfig }) {
             }
           }
         }
-      `,
-    }),
-  })
+      `
 
-  const res = await response.json()
-
-  return res.data
+  return fetchGraphql({ runTimeConfig, query })
 }

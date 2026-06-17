@@ -1,11 +1,7 @@
+import { fetchGraphql } from '~/lib/graphql'
+
 export async function getProjectDetailData({ runTimeConfig, slug }) {
-  const response = await fetch(runTimeConfig.public.graphqlEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
+  const query = `
         {
           project(id: "${slug}", idType: SLUG) {
             title(format: RENDERED)
@@ -205,13 +201,9 @@ export async function getProjectDetailData({ runTimeConfig, slug }) {
             }
           }
         }
-      `,
-    }),
-  })
+      `
 
-  const res = await response.json()
-
-  const data = res.data
+  const data = await fetchGraphql({ runTimeConfig, query })
 
   // get all featured projects
   const allFeaturedProjects = data.global.globalData?.featuredProjects?.nodes || []
