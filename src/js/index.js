@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ----------------
   */
 
-  console.log('%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n', 'color: grey')
+  console.log('%c \nDevelopment by Cold Rice LLC \n \ncold-rice.info \n \n', 'color: grey')
 
   /*
   ----------------
