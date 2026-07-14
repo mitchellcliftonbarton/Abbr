@@ -36,8 +36,14 @@ const { data } = await useAsyncData(
   {
     getCachedData(key) {
       const cached = nuxtApp.payload.data[key] ?? nuxtApp.static?.data?.[key]
-      if (!cached?._fetchedAt) return undefined
-      if (Date.now() - cached._fetchedAt > CACHE_TTL) return undefined
+      if (!cached) return undefined
+      // On initial hydration, always reuse the SSR payload. The edge (swr) cache
+      // already governs HTML freshness, so refetching here would only discard
+      // good server-rendered content for a fragile client-side GraphQL fetch —
+      // which blanks the page whenever that fetch is slow or blocked (common on
+      // mobile). The TTL below only applies to later client-side navigations.
+      if (nuxtApp.isHydrating) return cached
+      if (!cached._fetchedAt || Date.now() - cached._fetchedAt > CACHE_TTL) return undefined
       return cached
     },
   },

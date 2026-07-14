@@ -60,8 +60,11 @@ const { data } = await useAsyncData(
   {
     getCachedData(key) {
       const cached = nuxtApp.payload.data[key] ?? nuxtApp.static?.data?.[key]
-      if (!cached?._fetchedAt) return undefined
-      if (Date.now() - cached._fetchedAt > CACHE_TTL) return undefined
+      if (!cached) return undefined
+      // Always reuse the SSR payload on hydration; only apply the TTL to
+      // client-side navigations. See pages/index.vue for the full rationale.
+      if (nuxtApp.isHydrating) return cached
+      if (!cached._fetchedAt || Date.now() - cached._fetchedAt > CACHE_TTL) return undefined
       return cached
     },
   },
