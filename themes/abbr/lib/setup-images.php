@@ -11,7 +11,10 @@ function add_custom_image_sizes() {
 
 function remove_default_image_sizes($sizes) {
     // remove medium_large, large, 1536x1536, 2048x2048. We keep 'thumbnail' and 'medium' because they are used in the media library
-    $sizes = array_diff($sizes, array('medium_large', 'large', '1536x1536', '2048x2048'));
-
+    // `intermediate_image_sizes_advanced` passes name => [width/height/crop],
+    // so remove by KEY. We keep 'thumbnail' and 'medium' for the media library.
+    foreach (array('medium_large', 'large', '1536x1536', '2048x2048') as $name) {
+        unset($sizes[$name]);
+    }
     return $sizes;
 }
